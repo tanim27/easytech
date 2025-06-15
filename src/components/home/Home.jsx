@@ -92,12 +92,12 @@ const Home = async () => {
 						Join Our Community
 					</h2>
 
-					<p className='text-lg text-gray-600'>
+					<p className='text-lg text-gray-600 text-center'>
 						Be part of a thriving network of learners, educators, and
 						professionals. Exchange ideas, ask questions, and grow together.
 					</p>
 
-					<div className='flex flex-col md:flex-row items-center justify-center gap-4'>
+					<div className='flex flex-col md:flex-row items-center justify-center gap-4 px-4'>
 						<div className='flex flex-col items-center max-w-xs p-6 bg-white shadow-md rounded-xl'>
 							<div className='text-teal-600 text-4xl mb-2'>💬</div>
 							<h3 className='font-semibold text-lg mb-2'>

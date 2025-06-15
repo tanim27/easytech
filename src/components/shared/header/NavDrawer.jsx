@@ -8,13 +8,13 @@ import { useEffect, useRef } from 'react'
 
 const menuItems = [
 	{ name: 'Home', path: '/' },
-	{ name: 'About Us', path: '/about-us' },
 	{ name: 'Courses', path: '/courses' },
 	{ name: 'Our Agency', path: '/agency' },
 	{ name: 'Freelancers Story', path: '/freelancers-story' },
 	{ name: 'Success Story', path: '/success-story' },
 	{ name: 'Student Reviews', path: '/student-reviews' },
 	{ name: 'Events', path: '/events' },
+	{ name: 'About Us', path: '/about-us' },
 	{ name: 'Contact Us', path: '/contact-us' },
 ]
 
