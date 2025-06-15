@@ -1,0 +1,77 @@
+'use client'
+
+import ShoppingCartCheckoutRoundedIcon from '@mui/icons-material/ShoppingCartCheckoutRounded'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import MobileNav from './MobileNav'
+
+const menuItems = [
+	{ name: 'Home', path: '/' },
+	{ name: 'About', path: '/about-us' },
+	{ name: 'Courses', path: '/courses' },
+	{ name: 'Our Agency', path: '/agency' },
+	{ name: 'Freelancers Story', path: '/freelancers-story' },
+	{ name: 'Success Story', path: '/success-story' },
+	{ name: 'Student Reviews', path: '/student-reviews' },
+	{ name: 'Events', path: '/events' },
+	{ name: 'Contact', path: '/contact-us' },
+]
+
+const Navbar = () => {
+	const pathname = usePathname()
+	const isActive = (path) => pathname === path
+
+	return (
+		<>
+			{/* Desktop Navbar */}
+			<header className='hidden lg:flex bg-white shadow-md sticky top-0 z-50'>
+				<div className='mx-auto px-8 py-16 flex flex-col items-center justify-center gap-6 w-full h-20'>
+					<div className='w-full flex justify-center items-center gap-20'>
+						<Link
+							href='/'
+							className='text-3xl font-bold text-[#129990]'
+						>
+							EasyTech
+						</Link>
+
+						<input
+							type='text'
+							placeholder='Search your favorite course'
+							className='max-w-5xl w-full px-4 py-2 rounded-full border border-gray-300 focus:border-[#129990] outline-none transition duration-200'
+						/>
+
+						<div className='flex gap-4'>
+							<button className='px-4 py-2 rounded-md text-white bg-[#129990] hover:bg-[#0e7d7a] transition cursor-pointer'>
+								<ShoppingCartCheckoutRoundedIcon />
+							</button>
+							<button className='w-[100px] px-4 py-2 text-[#129990] border border-[#129990] hover:bg-[#129990] hover:text-white transition cursor-pointer'>
+								<Link href='/login'>Login</Link>
+							</button>
+						</div>
+					</div>
+
+					<nav className='w-full flex justify-center items-center gap-10'>
+						{menuItems.map((item) => (
+							<Link
+								key={item.name}
+								href={item.path}
+								className={`relative text-md text-center font-medium px-2 py-1 transition-all duration-300 ease-in-out text-[#111111] 
+				hover:text-[#129990] 
+				after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-[#129990] 
+				after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300
+				${isActive(item.path) ? 'text-[#129990] after:scale-x-100' : ''}`}
+							>
+								{item.name}
+							</Link>
+						))}
+					</nav>
+				</div>
+			</header>
+
+			{/* Mobile Navbar */}
+			<MobileNav />
+		</>
+	)
+}
+
+export default Navbar
