@@ -29,7 +29,7 @@ const Navbar = () => {
 					<div className='w-full flex justify-center items-center gap-20'>
 						<Link
 							href='/'
-							className='text-3xl font-bold text-[#129990]'
+							className='text-3xl font-bold text-teal-600'
 						>
 							EasyTech
 						</Link>
@@ -37,14 +37,14 @@ const Navbar = () => {
 						<input
 							type='text'
 							placeholder='Search your favorite course'
-							className='max-w-5xl w-full px-4 py-2 rounded-full border border-gray-300 focus:border-[#129990] outline-none transition duration-200'
+							className='max-w-5xl w-full px-4 py-2 rounded-full border border-gray-300 focus:border-teal-600 outline-none transition duration-200'
 						/>
 
 						<div className='flex gap-4'>
-							<button className='px-4 py-2 rounded-md text-white bg-[#129990] hover:bg-[#0e7d7a] transition cursor-pointer'>
+							<button className='px-4 py-2 rounded-md text-white bg-teal-600 hover:bg-teal-700 transition cursor-pointer'>
 								<ShoppingCartCheckoutRoundedIcon />
 							</button>
-							<button className='w-[100px] px-4 py-2 text-[#129990] border border-[#129990] hover:bg-[#129990] hover:text-white transition cursor-pointer'>
+							<button className='w-[100px] px-4 py-2 text-teal-600 border border-teal-600 hover:bg-teal-600 hover:text-white transition cursor-pointer'>
 								<Link href='/login'>Login</Link>
 							</button>
 						</div>
@@ -55,11 +55,11 @@ const Navbar = () => {
 							<Link
 								key={item.name}
 								href={item.path}
-								className={`relative text-md text-center font-medium px-2 py-1 transition-all duration-300 ease-in-out text-[#111111] 
-				hover:text-[#129990] 
-				after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-[#129990] 
+								className={`relative text-sm text-center font-semibold px-2 py-1 transition-all duration-300 ease-in-out text-gray-600
+				hover:text-teal-600 
+				after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-teal-600 
 				after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300
-				${isActive(item.path) ? 'text-[#129990] after:scale-x-100' : ''}`}
+				${isActive(item.path) ? 'text-teal-600 after:scale-x-100' : ''}`}
 							>
 								{item.name}
 							</Link>

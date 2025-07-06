@@ -66,9 +66,9 @@ const Home = async () => {
 
 			{/* Why Choose Us */}
 			<section className='flex flex-col justify-center items-center'>
-				<div className='max-w-6xl mx-auto flex flex-col justify-center items-center gap-8'>
+				<div className='max-w-7xl mx-auto flex flex-col justify-center items-center gap-8'>
 					<h2 className='text-3xl md:text-4xl font-extrabold'>Why Choose Us</h2>
-					<div className='flex flex-col md:flex-row flex-wrap gap-8 justify-center items-center px-6 py-12'>
+					<div className='flex flex-col md:flex-row flex-wrap gap-8 justify-center items-center px-4 py-12'>
 						{features.map((feature, idx) => (
 							<div
 								key={idx}

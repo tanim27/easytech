@@ -68,7 +68,7 @@ const Navdrawer = ({ isOpen, onClose }) => {
 				<div className='flex justify-end'>
 					<button
 						onClick={onClose}
-						className='text-[#111111] hover:text-[#129990] p-2 rounded-full hover:bg-gray-100 transition duration-300 cursor-pointer'
+						className='text-[#111111] hover:text-teal-600 p-2 rounded-full hover:bg-gray-100 transition duration-300 cursor-pointer'
 					>
 						<CloseRoundedIcon fontSize='large' />
 					</button>
@@ -83,8 +83,8 @@ const Navdrawer = ({ isOpen, onClose }) => {
 									onClick={onClose}
 									className={`block px-4 py-4 text-base font-medium transition duration-200 ${
 										isActive(item.path)
-											? 'text-[#129990] border-l-4 border-[#129990] bg-[#f0fdfc]'
-											: 'text-[#111111] hover:text-[#129990] hover:bg-gray-100'
+											? 'text-teal-600 border-l-4 border-teal-600 bg-[#f0fdfc]'
+											: 'text-[#111111] hover:text-teal-600 hover:bg-gray-100'
 									}`}
 								>
 									{item.name}

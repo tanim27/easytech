@@ -17,14 +17,14 @@ const MobileNav = () => {
 			<div className='flex justify-between items-center px-4 h-16'>
 				<Link
 					href='/'
-					className='text-2xl font-bold text-[#129990]'
+					className='text-2xl font-bold text-teal-600'
 				>
 					EasyTech
 				</Link>
 
 				<button
 					onClick={handleMenuClick}
-					className='text-gray-800 hover:text-[#129990] transition cursor-pointer'
+					className='text-gray-800 hover:text-teal-600 transition cursor-pointer'
 				>
 					<MenuRoundedIcon fontSize='large' />
 				</button>
