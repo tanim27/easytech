@@ -44,8 +44,8 @@ const AboutUs = () => {
 	}, [])
 
 	return (
-		<section className='relative bg-white py-32 px-6 md:px-16 overflow-hidden'>
-			<div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start'>
+		<section className='relative px-8 py-32 overflow-hidden'>
+			<div className='mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start'>
 				{/* Text Content */}
 				<div
 					className='space-y-6'
@@ -70,13 +70,13 @@ const AboutUs = () => {
 
 				{/* Image Section */}
 				<div
-					className='relative w-full h-[450px] md:h-[550px]'
+					className='relative w-full h-[350px] md:h-[450px]'
 					ref={imageRef}
 				>
 					<div className='absolute inset-0 bg-teal-100 rounded-3xl transform rotate-2 scale-102 -z-10 shadow-xl'></div>
 					<Image
-						height={500}
-						width={500}
+						height={400}
+						width={400}
 						src='/assets/hero-image.jpg'
 						alt='EasyTech Team'
 						className='rounded-3xl shadow-2xl w-full h-full object-cover object-center transition duration-300 hover:rotate-2'

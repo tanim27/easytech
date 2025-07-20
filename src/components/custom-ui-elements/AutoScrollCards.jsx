@@ -5,7 +5,7 @@ import StarBorder from '@mui/icons-material/StarBorder'
 import gsap from 'gsap'
 import { useEffect, useRef } from 'react'
 
-const cards = [
+export const cards = [
 	{
 		id: 1,
 		name: 'John Doe',
@@ -147,7 +147,7 @@ const AutoScrollCards = () => {
 	}
 
 	return (
-		<section className='w-full overflow-hidden py-10 bg-gray-50'>
+		<section className='w-full overflow-hidden py-10'>
 			<div className='relative w-full'>
 				<div
 					className='flex w-max space-x-6 px-4'
@@ -158,7 +158,7 @@ const AutoScrollCards = () => {
 					{repeatedCards.map((card, index) => (
 						<div
 							key={index}
-							className='min-w-[320px] max-w-xs bg-white rounded-xl shadow-md p-6 flex flex-col items-center justify-between text-center hover:shadow-lg transition-shadow duration-300'
+							className='min-w-[320px] max-w-xs rounded-xl shadow-md p-6 flex flex-col items-center justify-between text-center hover:shadow-lg transition-shadow duration-300'
 						>
 							<img
 								src={card.image}

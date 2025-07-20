@@ -25,20 +25,24 @@ const Navbar = () => {
 		<>
 			{/* Desktop Navbar */}
 			<header className='hidden lg:flex bg-white shadow-md sticky top-0 z-50'>
-				<div className='mx-auto px-8 py-16 flex flex-col items-center justify-center gap-6 w-full h-20'>
+				<div className='w-full h-24 px-8 py-16 flex flex-col justify-center items-center gap-6'>
 					<div className='w-full flex justify-center items-center gap-20'>
-						<Link
-							href='/'
-							className='text-3xl font-bold text-teal-600'
-						>
-							EasyTech
-						</Link>
+						<div>
+							<Link
+								href='/'
+								className='text-3xl font-bold text-teal-600'
+							>
+								EasyTech
+							</Link>
+						</div>
 
-						<input
-							type='text'
-							placeholder='Search your favorite course'
-							className='max-w-5xl w-full px-4 py-2 rounded-full border border-gray-300 focus:border-teal-600 outline-none transition duration-200'
-						/>
+						<div className='w-full'>
+							<input
+								type='text'
+								placeholder='Search your favorite course'
+								className='w-full px-4 py-2 rounded-full border border-gray-300 focus:border-teal-600 outline-none transition duration-200'
+							/>
+						</div>
 
 						<div className='flex gap-4'>
 							<button className='px-4 py-2 rounded-md text-white bg-teal-600 hover:bg-teal-700 transition cursor-pointer'>
@@ -50,12 +54,12 @@ const Navbar = () => {
 						</div>
 					</div>
 
-					<nav className='w-full flex justify-center items-center gap-10'>
+					<nav className='w-full flex justify-around items-center py-2'>
 						{menuItems.map((item) => (
 							<Link
 								key={item.name}
 								href={item.path}
-								className={`relative text-sm text-center font-semibold px-2 py-1 transition-all duration-300 ease-in-out text-gray-600
+								className={`relative text-sm text-center font-semibold transition-all duration-300 ease-in-out text-gray-600
 				hover:text-teal-600 
 				after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-teal-600 
 				after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300

@@ -1,6 +1,6 @@
 import { Bolt, Security, SupportAgent, ThumbUp } from '@mui/icons-material'
 import AboutUs from '../about-us/AboutUs'
-import AutoScrollCards from '../custom-ui-elements/AutoScrollCards'
+import StudentFeedbackCarousel from '../custom-ui-elements/StudentFeedbackCarousel'
 
 const features = [
 	{
@@ -33,10 +33,10 @@ const Home = async () => {
 	await new Promise((resolve) => setTimeout(resolve, 3000))
 
 	return (
-		<main className='min-h-screen bg-white text-gray-800'>
+		<main className='text-gray-800'>
 			{/* Hero Section */}
-			<section className='bg-teal-50 py-20 px-4'>
-				<div className='max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12'>
+			<section className='min-h-screen bg-teal-50 px-8 py-12'>
+				<div className='mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12'>
 					<div className='text-center lg:text-left'>
 						<h2 className='text-4xl lg:text-5xl font-extrabold text-teal-700 mb-4'>
 							Empowering Your Tech Journey
@@ -51,7 +51,7 @@ const Home = async () => {
 						</button>
 					</div>
 
-					<div className='w-full lg:w-1/2'>
+					<div className='w-full lg:w-1/2 '>
 						<img
 							src='/assets/hero-image.jpg'
 							alt='hero-image'
@@ -86,7 +86,7 @@ const Home = async () => {
 			</section>
 
 			{/* Join Our Community */}
-			<section className='mt-10 bg-white flex flex-col justify-center items-center'>
+			<section className='mt-10 flex flex-col justify-center items-center'>
 				<div className='max-w-6xl mx-auto flex flex-col justify-center items-center gap-8'>
 					<h2 className='text-3xl md:text-4xl font-extrabold'>
 						Join Our Community
@@ -99,7 +99,7 @@ const Home = async () => {
 
 					<div className='flex flex-col md:flex-row items-center justify-center gap-4 px-4'>
 						<div className='flex flex-col items-center max-w-xs p-6 bg-white shadow-md rounded-xl'>
-							<div className='text-teal-600 text-4xl mb-2'>💬</div>
+							<div className='text-4xl mb-2'>💬</div>
 							<h3 className='font-semibold text-lg mb-2'>
 								Engaging Discussions
 							</h3>
@@ -109,7 +109,7 @@ const Home = async () => {
 							</p>
 						</div>
 						<div className='flex flex-col items-center max-w-xs p-6 bg-white shadow-md rounded-xl'>
-							<div className='text-teal-600 text-4xl mb-2'>🤝</div>
+							<div className='text-4xl mb-2'>🤝</div>
 							<h3 className='font-semibold text-lg mb-2'>
 								Collaborative Study
 							</h3>
@@ -119,7 +119,7 @@ const Home = async () => {
 							</p>
 						</div>
 						<div className='flex flex-col items-center max-w-xs p-6 bg-white shadow-md rounded-xl'>
-							<div className='text-teal-600 text-4xl mb-2'>🎉</div>
+							<div className='text-4xl mb-2'>🎉</div>
 							<h3 className='font-semibold text-lg mb-2'>Exclusive Events</h3>
 							<p className='text-gray-500 text-sm'>
 								Attend webinars, workshops, and live sessions hosted by experts
@@ -142,7 +142,8 @@ const Home = async () => {
 			{/* Learners Feedback */}
 			<section className='py-16 px-4 text-center'>
 				<h2 className='text-3xl font-semibold mb-12'>Learners Feedback</h2>
-				<AutoScrollCards />
+				<StudentFeedbackCarousel />
+				{/* <AutoScrollCards /> */}
 			</section>
 
 			{/* Promo Section */}
@@ -158,7 +159,7 @@ const Home = async () => {
 			</section>
 
 			{/* Footer CTA */}
-			<section className='bg-gray-100 py-12 px-4 text-center'>
+			<section className=' py-12 px-4 text-center'>
 				<h3 className='text-2xl font-bold mb-2'>
 					Start Learning with EasyTech
 				</h3>
