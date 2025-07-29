@@ -1,5 +1,5 @@
 const AgencyPage = () => {
-	return <div>AgencyPage</div>
+	return <>AgencyPage</>
 }
 
 export default AgencyPage

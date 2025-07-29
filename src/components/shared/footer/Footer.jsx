@@ -14,7 +14,7 @@ const Footer = () => {
 	return (
 		<div className='relative'>
 			{/* Shadow on top */}
-			<div className='absolute -top-1 left-0 w-full h-2 rotate-180 shadow-md'></div>
+			{/* <div className='absolute -top-1 left-0 w-full h-2 rotate-180 shadow-md'></div> */}
 			<footer className='text-gray-600'>
 				<div className='w-full mx-auto px-8 py-12'>
 					{/* Top Section: Logo + Links */}
