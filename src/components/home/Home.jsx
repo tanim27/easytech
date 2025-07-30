@@ -33,7 +33,7 @@ const Home = async () => {
 	await new Promise((resolve) => setTimeout(resolve, 3000))
 
 	return (
-		<main className='text-gray-800'>
+		<main className=''>
 			{/* Hero Section */}
 			<section className='min-h-screen bg-teal-50 px-8 py-12'>
 				<div className='mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12'>
