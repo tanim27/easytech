@@ -37,7 +37,7 @@ const StudentFeedbackCarousel = () => {
 					},
 				}}
 				modules={[Pagination]}
-				className='student-swiper'
+				className='student-swiper !pb-16'
 			>
 				{cards.map((card, index) => (
 					<SwiperSlide key={index}>
