@@ -54,21 +54,21 @@ const AboutUs = () => {
 				</h1>
 			</section>
 
-			<section className=' relative px-8 py-32 overflow-hidden'>
+			<section className='relative px-4 sm:px-8 md:px-12 py-16 md:py-32 overflow-hidden'>
 				<div className='mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start'>
 					{/* Text Content */}
-					<div>
+					<div className='text-start mb-6'>
 						<p className='text-sm font-semibold text-teal-600 uppercase'>
 							Distance Learning
 						</p>
 						<h2 className='text-4xl md:text-5xl font-extrabold text-gray-900 leading-snug mt-2'>
 							Build Your Project Management Skills Online, Anytime
 						</h2>
-						<p className='font-medium text-gray-600 mt-4'>
+						<p className='font-medium text-gray-600 text-justify mt-4'>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 							eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						</p>
-						<p className='font-bold text-gray-600 mt-3'>
+						<p className='font-bold text-gray-600 text-justify mt-4'>
 							Sed ut perspiciatis unde omnis iste natus error sit voluptatem
 							accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
 							quae ab illo inventore veritatis et quasi architecto beatae vitae
@@ -83,7 +83,8 @@ const AboutUs = () => {
 							onClick={openModal}
 						>
 							<img
-								src={thumbnailUrl}
+								// src={thumbnailUrl}
+								src='/assets/illustrations/image-5.jpg'
 								alt='YouTube Thumbnail'
 								className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-300'
 							/>
@@ -225,19 +226,30 @@ const AboutUs = () => {
 				</div>
 			</section>
 
-			<section className='py-16 px-4 text-center'>
-				<h2 className='text-3xl font-semibold mb-12'>Learners Feedback</h2>
+			<section className='px-4 sm:px-8 md:px-12 py-16'>
+				<div className='text-center flex flex-col gap-2 mb-16'>
+					<p className='font-semibold text-teal-600 uppercase'>
+						Learners Feedback
+					</p>
+					<h2 className='font-extrabold text-3xl md:text-4xl text-gray-900 leading-tight'>
+						Watch What Our Students Tell <br /> About Us
+					</h2>
+					<p className='max-w-2xl mx-auto text-gray-600 text-base'>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+				</div>
+
 				<StudentFeedbackCarousel />
-				{/* <AutoScrollCards /> */}
 			</section>
 
-			<section className='bg-[#f2f2f2] py-20 px-4'>
-				<div className='text-center mb-12'>
-					<p className='text-teal-600 font-semibold uppercase text-sm'>
+			<section className='px-4 sm:px-8 md:px-12 pt-8 pb-32'>
+				<div className='text-center flex flex-col gap-2 mb-16'>
+					<p className='font-semibold text-teal-600 uppercase'>
 						Course Advisor
 					</p>
-					<h2 className='text-4xl font-extrabold text-gray-900 mt-2 mb-4'>
-						Meet Our World-class Instructors
+					<h2 className='font-extrabold text-3xl md:text-4xl text-gray-900 leading-tight'>
+						Meet Our World-class <br /> Instructors
 					</h2>
 					<p className='text-gray-500 max-w-2xl mx-auto text-base'>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

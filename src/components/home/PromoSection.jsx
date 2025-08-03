@@ -71,7 +71,7 @@ const PromoSection = () => {
 					})}
 				</div>
 
-				<button className='mt-10 bg-white text-teal-700 font-bold px-6 py-3 rounded-sm hover:bg-gray-100 transition shadow-md'>
+				<button className='w-full md:w-[200px] bg-teal-600 hover:bg-teal-700 font-semibold text-white rounded-sm transition duration-300 shadow-md cursor-pointer px-6 py-3 mt-12'>
 					Enroll Now & Save
 				</button>
 			</div>

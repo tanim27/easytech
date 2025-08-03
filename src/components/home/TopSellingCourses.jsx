@@ -11,14 +11,16 @@ import '@/styles/globals.css'
 
 const TopSellingCourses = () => {
 	return (
-		<section className='py-24 px-4 md:px-20'>
+		<section className='px-4 sm:px-8 md:px-12 py-12'>
 			<div className='max-w-7xl mx-auto'>
-				<p className='text-teal-600 font-semibold uppercase text-center'>
-					Top Selling Courses
-				</p>
-				<h2 className='text-4xl font-extrabold text-gray-900 mt-2 mb-12 text-center'>
-					Join Thousands of Learners
-				</h2>
+				<div className='text-center flex flex-col gap-4 mb-16'>
+					<p className='text-teal-600 font-semibold uppercase text-center'>
+						Top Selling Courses
+					</p>
+					<h2 className='text-4xl font-extrabold text-gray-900 text-center'>
+						Join Thousands of Learners
+					</h2>
+				</div>
 
 				<Swiper
 					modules={[Navigation, Pagination, Autoplay]}
