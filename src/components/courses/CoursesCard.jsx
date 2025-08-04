@@ -2,6 +2,7 @@
 
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
+import Link from 'next/link'
 
 const CoursesCard = ({ course }) => {
 	return (
@@ -46,10 +47,14 @@ const CoursesCard = ({ course }) => {
 						{course.price}
 					</div>
 					<div className='flex gap-3'>
-						<button className='flex-1 bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-lg text-center font-semibold transition'>
+						<Link
+							href='/course-details'
+							className='flex-1 bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-lg text-center font-semibold transition text-sm flex items-center justify-center'
+						>
 							Enroll Now →
-						</button>
-						<button className='flex-1 border border-gray-200  hover:bg-gray-100 py-3 rounded-lg text-center text-gray-500 font-semibold transition'>
+						</Link>
+
+						<button className='flex-1 border border-gray-200 hover:bg-gray-100 py-3 rounded-lg text-center text-gray-500 font-semibold transition'>
 							Details
 						</button>
 					</div>

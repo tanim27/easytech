@@ -1,6 +1,6 @@
 import Courses from '@/components/courses/Courses'
 
-const CoursePage = () => {
+const CoursesPage = () => {
 	return (
 		<>
 			<Courses />
@@ -8,4 +8,4 @@ const CoursePage = () => {
 	)
 }
 
-export default CoursePage
+export default CoursesPage

@@ -1,8 +1,8 @@
 'use client'
 
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
 import Link from 'next/link'
 
+import AppsRoundedIcon from '@mui/icons-material/AppsRounded'
 import { useState } from 'react'
 import Navdrawer from './NavDrawer'
 
@@ -14,7 +14,7 @@ const MobileNav = () => {
 
 	return (
 		<div className='lg:hidden bg-white shadow-md sticky top-0 z-50'>
-			<div className='flex justify-between items-center px-8 h-20'>
+			<div className='flex justify-between items-center px-4 h-20'>
 				<Link
 					href='/'
 					className='text-2xl font-bold text-teal-600'
@@ -26,7 +26,7 @@ const MobileNav = () => {
 					onClick={handleMenuClick}
 					className='text-gray-800 hover:text-teal-600 transition cursor-pointer'
 				>
-					<MenuRoundedIcon fontSize='large' />
+					<AppsRoundedIcon fontSize='large' />
 				</button>
 			</div>
 

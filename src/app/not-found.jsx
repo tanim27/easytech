@@ -1,11 +1,13 @@
 'use client'
-// NotFoundPage.jsx
-import { useRouter } from 'next/navigation' // Remove if not using Next.js
+
+import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function NotFoundPage() {
 	const [isVisible, setIsVisible] = useState(false)
-	const router = useRouter() // Remove if not using Next.js
+	const router = useRouter()
 
 	useEffect(() => {
 		const timer = setTimeout(() => setIsVisible(true), 100)
@@ -13,23 +15,38 @@ export default function NotFoundPage() {
 	}, [])
 
 	return (
-		<div className='min-h-screen flex items-center justify-center bg-teal-50 px-4'>
+		<div className='flex items-center justify-center bg-gradient-to-br px-4'>
 			<div
-				className={`text-center transition-all duration-700 ease-out transform ${
+				className={`max-w-xl text-center transition-all duration-700 ease-out transform ${
 					isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
 				}`}
 			>
-				<h1 className='text-[6rem] font-extrabold text-teal-600 drop-shadow-md'>
+				{/* Optional Illustration */}
+				<div className='mb-6'>
+					<Image
+						src='/assets/illustrations/404.png' // Add a relevant SVG/PNG file in /public/illustrations
+						alt='Not Found'
+						width={600}
+						height={400}
+						className='mx-auto'
+					/>
+				</div>
+
+				<h1 className='text-[5rem] md:text-[6rem] font-black text-teal-600 drop-shadow-md tracking-tight leading-none'>
 					404
 				</h1>
-				<h2 className='text-xl font-bold text-teal-600'>Page Not Found</h2>
-				<p className='text-gray-600 text-lg md:text-xl my-6'>
-					Sorry, we couldn’t find what you’re looking for.
+				<h2 className='text-2xl md:text-3xl font-semibold text-gray-800 mt-2'>
+					Page Not Found
+				</h2>
+				<p className='text-gray-600 text-base md:text-lg mt-4'>
+					Oops! The page you're looking for doesn't exist or has been moved.
 				</p>
+
 				<button
 					onClick={() => router.push('/')}
-					className='bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-full text-lg shadow-lg transition duration-300 cursor-pointer'
+					className='mt-8 inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-full text-base md:text-lg font-medium shadow-md transition-all duration-300 cursor-pointer'
 				>
+					<ArrowBackRoundedIcon fontSize='medium' />
 					Go Back Home
 				</button>
 			</div>

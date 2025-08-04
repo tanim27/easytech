@@ -13,7 +13,7 @@ const menuItems = [
 	{ name: 'Freelancers Story', path: '/freelancers-story' },
 	{ name: 'Success Story', path: '/success-story' },
 	{ name: 'Student Reviews', path: '/student-reviews' },
-	{ name: 'Events', path: '/events' },
+	{ name: 'FAQs', path: '/frequently-asked-questions' },
 	{ name: 'About Us', path: '/about-us' },
 	{ name: 'Contact Us', path: '/contact-us' },
 ]
