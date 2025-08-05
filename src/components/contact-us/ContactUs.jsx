@@ -24,12 +24,13 @@ const ContactUs = () => {
 
 	return (
 		<>
-			<div className='bg-gray-200 w-full h-[200px] md:h-[250px] flex justify-center items-center'>
-				<h1 className='font-extrabold text-4xl text-center text-gray-800 mb-12'>
+			<section className='bg-[#f2f2f2] w-full h-[150px] sm:h-[200px] md:h-[250px] lg:h-[280px] flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 lg:px-20 py-8 gap-4'>
+				<h1 className='font-extrabold text-4xl lg:text-5xl text-center text-gray-800'>
 					Contact Us
 				</h1>
-			</div>
-			<div className='bg-gray-100 py-16 px-4 sm:px-6 lg:px-8'>
+			</section>
+
+			<section className='py-16 px-4 sm:px-6 lg:px-8'>
 				<div className='max-w-7xl mx-auto'>
 					<div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
 						{/* Left: Contact Info */}
@@ -44,7 +45,7 @@ const ContactUs = () => {
 
 							{/* Phone & Email */}
 							<div className='flex items-start gap-4 mb-6 pb-6 border-b border-gray-300'>
-								<div className='bg-white px-6 py-6 rounded'>
+								<div className='bg-white px-6 py-6 shadow-lg'>
 									<Phone className='text-teal-600' />
 								</div>
 								<div>
@@ -58,7 +59,7 @@ const ContactUs = () => {
 
 							{/* Address */}
 							<div className='flex items-start gap-4 mb-6 pb-6 border-b border-gray-300'>
-								<div className='bg-white px-6 py-6 rounded'>
+								<div className='bg-white px-6 py-6 shadow-lg'>
 									<LocationOn className='text-teal-600' />
 								</div>
 								<div>
@@ -73,7 +74,7 @@ const ContactUs = () => {
 
 							{/* Office Hours */}
 							<div className='flex items-start gap-4'>
-								<div className='bg-white px-6 py-6 rounded'>
+								<div className='bg-white px-6 py-6 shadow-lg'>
 									<AccessTime className='text-teal-600' />
 								</div>
 								<div>
@@ -91,7 +92,7 @@ const ContactUs = () => {
 						</div>
 
 						{/* Right: Contact Form */}
-						<div className='bg-white shadow-md p-8'>
+						<div className='bg-white shadow-xl p-8'>
 							<h2 className='text-2xl font-semibold text-gray-800 mb-6'>
 								Send Us a Message
 							</h2>
@@ -147,7 +148,7 @@ const ContactUs = () => {
 
 									<button
 										type='submit'
-										className='bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2 rounded-md shadow-sm transition duration-200'
+										className='w-full bg-teal-600 hover:bg-teal-700 font-semibold text-white  px-6 py-2 rounded-md shadow-sm transition duration-200 cursor-pointer'
 									>
 										Send Message
 									</button>
@@ -156,7 +157,7 @@ const ContactUs = () => {
 						</div>
 					</div>
 				</div>
-			</div>
+			</section>
 
 			<div className='w-full h-[350px] md:h-[450px]'>
 				<iframe

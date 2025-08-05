@@ -26,9 +26,8 @@ body {
 }
 
 /* In your global.css or component-level CSS */
-.student-swiper {
+/* .student-swiper {
 	padding-bottom: 40px;
-	/* space for pagination */
 	position: relative;
 }
 
@@ -38,7 +37,7 @@ body {
 	left: 0;
 	width: 100%;
 	text-align: center;
-}
+} */
 
 /* Custom Swiper pagination styles */
 .student-swiper .swiper-pagination-bullet {
@@ -47,6 +46,16 @@ body {
 }
 
 .student-swiper .swiper-pagination-bullet-active {
+	background-color: #0d9488;
+	opacity: 1;
+}
+
+.courses-swiper .swiper-pagination-bullet {
+	background-color: #0d9488;
+	opacity: 0.4;
+}
+
+.courses-swiper .swiper-pagination-bullet-active {
 	background-color: #0d9488;
 	opacity: 1;
 }

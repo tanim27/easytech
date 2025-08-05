@@ -1,114 +1,219 @@
 // components/Footer.jsx
-import { Facebook, Instagram, Twitter, YouTube } from '@mui/icons-material'
-import Link from 'next/link'
 
-const footerLinks = [
-	{ name: 'About', path: '/about-us' },
-	{ name: 'Contact', path: '/contact-us' },
-	{ name: 'Privacy Policy', path: '/privacy-policy' },
-	{ name: 'Terms of Service', path: '/terms' },
-	{ name: 'Support', path: '/contact-us' },
-]
+import { Facebook, Instagram, Pinterest, YouTube } from '@mui/icons-material'
+import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded'
+import CallRoundedIcon from '@mui/icons-material/CallRounded'
+import EmailRoundedIcon from '@mui/icons-material/EmailRounded'
 
 const Footer = () => {
 	return (
-		<div className='relative'>
-			{/* Shadow on top */}
-			{/* <div className='absolute -top-1 left-0 w-full h-2 rotate-180 shadow-md'></div> */}
-			<footer className='text-gray-600'>
-				<div className='w-full mx-auto px-8 py-12'>
-					{/* Top Section: Logo + Links */}
-					<div className='flex flex-col lg:flex-row justify-between gap-12'>
-						{/* Logo + Description */}
-						<div className='flex-1 min-w-[250px]'>
-							<Link
-								href='/'
-								className='text-2xl font-bold text-teal-600'
-							>
-								EasyTech
-							</Link>
-							<p className='mt-4 text-sm text-justify'>
-								Empowering the next generation of digital professionals through
-								practical learning and real success stories.
-							</p>
-						</div>
+		<footer className='bg-teal-950 text-white pt-16 px-4 sm:px-8 md:px-12'>
+			{/* Top Section */}
+			<div className='max-w-7xl mx-auto flex flex-col lg:flex-row flex-wrap lg:justify-between gap-12'>
+				{/* Column 1 - Branding */}
+				<div className='flex-1 min-w-[240px] pr-6 lg:border-r lg:border-white/20'>
+					<h3 className='text-3xl md:text-4xl font-bold mb-3'>EASYTECH</h3>
+					<div className='h-[2px] w-12 bg-white mb-4' />
+					<p className='text-sm text-gray-300 mb-4'>
+						Fusce varius, dolor tempor interdum tristique bibendum.
+					</p>
+				</div>
 
-						{/* Links and Contact */}
-						<div className='flex flex-col sm:flex-row flex-1 justify-between gap-8'>
-							{/* Quick Links */}
-							<div>
-								<h3 className='text-lg font-bold mb-3 text-teal-600'>
-									Quick Links
-								</h3>
-								<ul className='space-y-2 text-sm'>
-									{footerLinks.map((link) => (
-										<li key={link.name}>
-											<Link
-												href={link.path}
-												className='hover:text-teal-600 transition'
-											>
-												{link.name}
-											</Link>
-										</li>
-									))}
-								</ul>
-							</div>
+				{/* Column 2 - Company Info */}
+				<div className='flex-1 min-w-[240px] lg:pl-6'>
+					<h3 className='text-lg font-bold mb-3'>COMPANY INFO</h3>
+					<div className='h-[2px] w-12 bg-white mb-4' />
+					<ul className='space-y-2 text-sm'>
+						<li className='flex items-center gap-2'>
+							{/* Hover group wraps both */}
+							<span className='group flex items-center gap-2 cursor-pointer'>
+								{/* Icon slides right when text is hovered */}
+								<ArrowRightAltRoundedIcon
+									fontSize='medium'
+									className='transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-teal-400'
+								/>
 
-							{/* Menu */}
-							<div>
-								<h3 className='text-lg font-bold mb-3 text-teal-600'>Menu</h3>
-								<ul className='space-y-2 text-sm'>
-									{[
-										{ name: 'Courses', path: '/courses' },
-										{ name: 'Our Agency', path: '/agency' },
-										{ name: 'Freelancers Story', path: '/freelancers-story' },
-										{ name: 'Success Story', path: '/success-story' },
-										{ name: 'Student Reviews', path: '/student-reviews' },
-										{ name: 'Events', path: '/events' },
-									].map((item) => (
-										<li key={item.name}>
-											<Link
-												href={item.path}
-												className='hover:text-teal-600 transition'
-											>
-												{item.name}
-											</Link>
-										</li>
-									))}
-								</ul>
-							</div>
+								{/* Text changes color smoothly */}
+								<span className='group-hover:text-teal-400 transition duration-300'>
+									About Us
+								</span>
+							</span>
+						</li>
 
-							{/* Contact & Social */}
-							<div>
-								<h3 className='text-lg font-bold mb-3 text-teal-600'>
-									Contact Us
-								</h3>
-								<p className='text-sm mb-2'>
-									123 Digital Street, Dhaka, Bangladesh
-								</p>
-								<p className='text-sm mb-2'>Email: support@easytech.com</p>
-								<p className='text-sm mb-4'>Phone: +880 1234-567890</p>
+						<li className='flex items-center gap-2'>
+							{/* Hover group wraps both */}
+							<span className='group flex items-center gap-2 cursor-pointer'>
+								{/* Icon slides right when text is hovered */}
+								<ArrowRightAltRoundedIcon
+									fontSize='medium'
+									className='group-hover:translate-x-1 group-hover:text-teal-400 transition duration-300 '
+								/>
+								{/* Text changes color smoothly */}
+								<span className='group-hover:text-teal-400 transition duration-300'>
+									About Us
+								</span>
+							</span>
+						</li>
+						<li className='flex items-center gap-2'>
+							{/* Hover group wraps both */}
+							<span className='group flex items-center gap-2 cursor-pointer'>
+								{/* Icon slides right when text is hovered */}
+								<ArrowRightAltRoundedIcon
+									fontSize='medium'
+									className='group-hover:translate-x-1 group-hover:text-teal-400 transition duration-300 '
+								/>
+								{/* Text changes color smoothly */}
+								<span className='group-hover:text-teal-400 transition duration-300'>
+									About Us
+								</span>
+							</span>
+						</li>
+						<li className='flex items-center gap-2'>
+							{/* Hover group wraps both */}
+							<span className='group flex items-center gap-2 cursor-pointer'>
+								{/* Icon slides right when text is hovered */}
+								<ArrowRightAltRoundedIcon
+									fontSize='medium'
+									className='group-hover:translate-x-1 group-hover:text-teal-400 transition duration-300 '
+								/>
+								{/* Text changes color smoothly */}
+								<span className='group-hover:text-teal-400 transition duration-300'>
+									About Us
+								</span>
+							</span>
+						</li>
+						<li className='flex items-center gap-2'>
+							{/* Hover group wraps both */}
+							<span className='group flex items-center gap-2 cursor-pointer'>
+								{/* Icon slides right when text is hovered */}
+								<ArrowRightAltRoundedIcon
+									fontSize='medium'
+									className='group-hover:translate-x-1 group-hover:text-teal-400 transition duration-300 '
+								/>
+								{/* Text changes color smoothly */}
+								<span className='group-hover:text-teal-400 transition duration-300'>
+									About Us
+								</span>
+							</span>
+						</li>
+					</ul>
+				</div>
 
-								<div className='flex gap-4'>
-									<Facebook className='text-teal-600 hover:text-teal-700 cursor-pointer' />
-									<Twitter className='text-teal-600 hover:text-teal-700 cursor-pointer' />
-									<Instagram className='text-teal-600 hover:text-teal-700 cursor-pointer' />
-									<YouTube className='text-teal-600 hover:text-teal-700 cursor-pointer' />
-								</div>
-							</div>
-						</div>
-					</div>
+				{/* Column 3 - Useful Links */}
+				<div className='flex-1 min-w-[240px] lg:pl-6'>
+					<h3 className='text-lg font-bold mb-3'>USEFUL LINKS</h3>
+					<div className='h-[2px] w-12 bg-white mb-4' />
+					<ul className='space-y-2 text-sm'>
+						<li className='flex items-center gap-2'>
+							{/* Hover group wraps both */}
+							<span className='group flex items-center gap-2 cursor-pointer'>
+								{/* Icon slides right when text is hovered */}
+								<ArrowRightAltRoundedIcon
+									fontSize='medium'
+									className='group-hover:translate-x-1 group-hover:text-teal-400 transition duration-300 '
+								/>
+								{/* Text changes color smoothly */}
+								<span className='group-hover:text-teal-400 transition duration-300'>
+									Reviews
+								</span>
+							</span>
+						</li>
 
-					{/* Divider */}
-					<div className='my-8 border-t border-gray-200'></div>
+						<li className='flex items-center gap-2'>
+							{/* Hover group wraps both */}
+							<span className='group flex items-center gap-2 cursor-pointer'>
+								{/* Icon slides right when text is hovered */}
+								<ArrowRightAltRoundedIcon
+									fontSize='medium'
+									className='group-hover:translate-x-1 group-hover:text-teal-400 transition duration-300 '
+								/>
+								{/* Text changes color smoothly */}
+								<span className='group-hover:text-teal-400 transition duration-300'>
+									FAQs
+								</span>
+							</span>
+						</li>
 
-					{/* Copyright */}
-					<div className='text-center text-sm text-gray-500'>
-						&copy; {new Date().getFullYear()} EasyTech. All rights reserved.
+						<li className='flex items-center gap-2'>
+							{/* Hover group wraps both */}
+							<span className='group flex items-center gap-2 cursor-pointer'>
+								{/* Icon slides right when text is hovered */}
+								<ArrowRightAltRoundedIcon
+									fontSize='medium'
+									className='transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-teal-400'
+								/>
+
+								{/* Text changes color smoothly */}
+								<span className='group-hover:text-teal-400 transition duration-300'>
+									About Us
+								</span>
+							</span>
+						</li>
+
+						<li className='flex items-center gap-2'>
+							{/* Hover group wraps both */}
+							<span className='group flex items-center gap-2 cursor-pointer'>
+								{/* Icon slides right when text is hovered */}
+								<ArrowRightAltRoundedIcon
+									fontSize='medium'
+									className='group-hover:translate-x-1 group-hover:text-teal-400 transition duration-300 '
+								/>
+								{/* Text changes color smoothly */}
+								<span className='group-hover:text-teal-400 transition duration-300'>
+									Contact
+								</span>
+							</span>
+						</li>
+					</ul>
+				</div>
+
+				{/* Column 4 - Contact */}
+				<div className='flex-1 min-w-[240px]'>
+					<h3 className='text-lg font-semibold mb-3'>GET IN TOUCH!</h3>
+					<div className='h-[2px] w-12 bg-white mb-4' />
+					<p className='text-sm mb-4'>
+						Fusce varius, dolor tempor interdum tristique bibendum.
+					</p>
+					<p className='flex items-center gap-2 mb-2'>
+						<CallRoundedIcon
+							fontSize='small'
+							className='text-teal-600'
+						/>
+						<span>(702) 123-1478</span>
+					</p>
+					<p className='flex items-center gap-2 mb-4'>
+						<EmailRoundedIcon
+							fontSize='small'
+							className='text-teal-600'
+						/>
+						<span>info@easytech.com</span>
+					</p>
+					<div className='flex gap-4'>
+						<Facebook
+							className='hover:text-teal-600 cursor-pointer'
+							fontSize='medium'
+						/>
+						<Instagram
+							className='hover:text-teal-600 cursor-pointer'
+							fontSize='medium'
+						/>
+						<Pinterest
+							className='hover:text-teal-600 cursor-pointer'
+							fontSize='medium'
+						/>
+						<YouTube
+							className='hover:text-teal-600 cursor-pointer'
+							fontSize='medium'
+						/>
 					</div>
 				</div>
-			</footer>
-		</div>
+			</div>
+
+			{/* Bottom copyright */}
+			<div className='border-t border-white/10 mt-12 py-6 text-center text-sm text-gray-400'>
+				Copyright © 2025 EasyTech. All Rights Reserved.
+			</div>
+		</footer>
 	)
 }
 

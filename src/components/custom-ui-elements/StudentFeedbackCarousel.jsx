@@ -18,29 +18,39 @@ const StudentFeedbackCarousel = () => {
 	return (
 		<>
 			<Swiper
-				spaceBetween={20} // default
 				pagination={{
 					clickable: true,
 				}}
 				breakpoints={{
+					320: {
+						slidesPerView: 1,
+						spaceBetween: 16,
+					},
 					640: {
 						slidesPerView: 1,
-						spaceBetween: 20,
+						spaceBetween: 24,
 					},
 					768: {
 						slidesPerView: 2,
-						spaceBetween: 100,
+						spaceBetween: 32,
 					},
 					1024: {
 						slidesPerView: 3,
-						spaceBetween: 100,
+						spaceBetween: 40,
+					},
+					1280: {
+						slidesPerView: 3,
+						spaceBetween: 48,
 					},
 				}}
 				modules={[Pagination]}
-				className='student-swiper'
+				className='student-swiper !pb-16 px-2 sm:px-4 md:px-6'
 			>
 				{cards.map((card, index) => (
-					<SwiperSlide key={index}>
+					<SwiperSlide
+						key={index}
+						className='!flex justify-center'
+					>
 						<div className='w-full max-w-[500px] h-auto mx-auto bg-white shadow-md p-4 relative overflow-hidden sm:h-[250px]'>
 							{/* Folded Corner */}
 							<div className='absolute bottom-0 right-0 w-0 h-0 border-b-[25px] border-b-white border-l-[25px] border-l-[#f5f5f5]'></div>
