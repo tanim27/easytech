@@ -7,7 +7,7 @@ import EmailRoundedIcon from '@mui/icons-material/EmailRounded'
 
 const Footer = () => {
 	return (
-		<footer className='bg-teal-950 text-white pt-16 px-4 lg:px-20'>
+		<footer className='bg-teal-950 text-white pt-16 px-4 sm:px-8 md:px-12'>
 			{/* Top Section */}
 			<div className='max-w-7xl mx-auto flex flex-col lg:flex-row flex-wrap lg:justify-between gap-12'>
 				{/* Column 1 - Branding */}

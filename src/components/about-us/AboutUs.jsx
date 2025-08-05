@@ -59,7 +59,7 @@ const AboutUs = () => {
 					<div className='mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start'>
 						{/* Text Content */}
 						<div className='text-start mb-6'>
-							<p className='text-sm font-semibold text-teal-600 uppercase'>
+							<p className='font-semibold text-sm text-teal-600 uppercase'>
 								Distance Learning
 							</p>
 							<h2 className='text-4xl md:text-5xl font-extrabold text-gray-900 leading-snug mt-2'>

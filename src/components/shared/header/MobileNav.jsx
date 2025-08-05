@@ -13,8 +13,8 @@ const MobileNav = () => {
 	}
 
 	return (
-		<div className='lg:hidden bg-white shadow-md sticky top-0 z-50'>
-			<div className='flex justify-between items-center px-4 h-20'>
+		<div className='lg:hidden bg-white shadow-md sticky top-0 z-50 px-4 sm:px-8 md:px-12'>
+			<div className='flex justify-between items-center h-20'>
 				<Link
 					href='/'
 					className='text-2xl font-bold text-teal-600'

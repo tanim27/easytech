@@ -60,7 +60,7 @@ export default function FAQPage() {
 								className='bg-white overflow-hidden transition-all duration-300 shadow-sm'
 							>
 								<button
-									className='flex items-center justify-between w-full px-6 py-5 text-left focus:outline-none group cursor-pointer'
+									className='flex items-center justify-between w-full border-b border-gray-200 px-6 py-5 text-left focus:outline-none group cursor-pointer'
 									onClick={() => toggle(index)}
 								>
 									<span className='text-lg font-medium text-gray-900 group-hover:text-teal-600 transition'>

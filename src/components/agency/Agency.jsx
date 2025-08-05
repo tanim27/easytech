@@ -40,10 +40,10 @@ const Agency = () => {
 				<div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start'>
 					{/* Text Content */}
 					<div className='text-start mb-6'>
-						<p className='text-sm font-semibold text-teal-600 uppercase'>
+						<p className='font-semibold text-sm text-teal-600 uppercase'>
 							Distance Learning
 						</p>
-						<h2 className='text-4xl md:text-5xl font-extrabold text-gray-900 leading-snug mt-2'>
+						<h2 className='text-3xl md:text-4xl font-extrabold text-gray-900 leading-snug mt-2'>
 							Build Your Project Management Skills Online, Anytime
 						</h2>
 						<p className='font-medium text-gray-600 text-justify mt-4'>
@@ -126,10 +126,10 @@ const Agency = () => {
 
 					{/* Text Content */}
 					<div className='text-start mb-6'>
-						<p className='text-sm font-semibold text-teal-600 uppercase'>
+						<p className='font-semibold text-sm text-teal-600 uppercase'>
 							Distance Learning
 						</p>
-						<h2 className='text-4xl md:text-5xl font-extrabold text-gray-900 leading-snug mt-2'>
+						<h2 className='text-3xl md:text-4xl font-extrabold text-gray-900 leading-snug mt-2'>
 							Build Your Project Management Skills Online, Anytime
 						</h2>
 						<p className='font-medium text-gray-600 text-justify mt-4'>
@@ -176,7 +176,7 @@ const Agency = () => {
 					].map((item, idx) => (
 						<div
 							key={idx}
-							className='bg-white shadow-sm p-6 transition text-center'
+							className='bg-white rounded-sm shadow-sm p-6 transition text-center'
 						>
 							<div className='text-teal-600 text-6xl'>
 								<PsychologyAlt fontSize='inherit' />

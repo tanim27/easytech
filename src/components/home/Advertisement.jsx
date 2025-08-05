@@ -40,7 +40,7 @@ const Advertisement = () => {
 				{/* Text Section */}
 				<div className='max-w-2xl mx-auto lg:mx-0'>
 					<div className='text-start mb-6'>
-						<p className='font-semibold text-teal-600 uppercase'>
+						<p className='font-semibold text-sm text-teal-600 uppercase'>
 							Distance Learning
 						</p>
 						<h2 className='text-3xl md:text-4xl font-bold text-gray-900 text-justify mt-2'>
