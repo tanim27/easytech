@@ -49,9 +49,12 @@ const Header = () => {
 
 						{/* Icons + CTA */}
 						<div className='flex gap-4'>
-							<button className='px-4 py-2 text-white bg-teal-600 hover:bg-teal-700 rounded-sm transition cursor-pointer'>
-								<ShoppingCartCheckoutRoundedIcon />
-							</button>
+							<Link href='/cart'>
+								<button className='px-4 py-2 text-white bg-teal-600 hover:bg-teal-700 rounded-sm transition cursor-pointer'>
+									<ShoppingCartCheckoutRoundedIcon />
+								</button>
+							</Link>
+
 							<Link href='/auth/login'>
 								<button className='w-[100px] px-4 py-2 text-teal-600 border border-teal-600 hover:bg-teal-600 hover:text-white rounded-sm transition cursor-pointer'>
 									Login

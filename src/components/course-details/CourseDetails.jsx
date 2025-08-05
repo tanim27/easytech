@@ -10,7 +10,7 @@ import {
 import Image from 'next/image'
 
 import { ExpandMore } from '@mui/icons-material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const courseWeeks = [
 	{
@@ -99,8 +99,48 @@ const instructors = [
 	},
 ]
 
+const sectionTabs = [
+	{ label: 'Course Overview', id: 'overview' },
+	{ label: 'Course Output', id: 'output' },
+	{ label: 'Course Content', id: 'content' },
+	{ label: 'Course Instructors', id: 'instructors' },
+	{ label: 'Course Reviews', id: 'reviews' },
+	{ label: 'Write A Review', id: 'write-a-review' },
+]
+
+const scrollToSection = (id) => {
+	const section = document.getElementById(id)
+	if (section) {
+		section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+	}
+}
+
 const CourseDetails = () => {
 	const [openIndex, setOpenIndex] = useState(null)
+	const [activeSection, setActiveSection] = useState('overview')
+
+	useEffect(() => {
+		const observerOptions = {
+			root: null,
+			rootMargin: '0px 0px -50% 0px',
+			threshold: 0.1,
+		}
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					setActiveSection(entry.target.id)
+				}
+			})
+		}, observerOptions)
+
+		sectionTabs.forEach(({ id }) => {
+			const section = document.getElementById(id)
+			if (section) observer.observe(section)
+		})
+
+		return () => observer.disconnect()
+	}, [])
 
 	const toggleAccordion = (index) => {
 		setOpenIndex((prevIndex) => (prevIndex === index ? null : index))
@@ -120,8 +160,31 @@ const CourseDetails = () => {
 				</div>
 			</section>
 
+			{/* Tabs Navigation */}
+			<section className='bg-white border-b border-gray-300 sticky top-0 z-50 py-4'>
+				<div className='flex flex-wrap justify-center gap-4 max-w-7xl mx-auto px-4 sm:px-8'>
+					{sectionTabs.map((tab) => (
+						<button
+							key={tab.id}
+							onClick={() => scrollToSection(tab.id)}
+							className={`px-5 py-2 rounded-full transition font-medium border cursor-pointer
+              ${
+								activeSection === tab.id
+									? 'bg-teal-600 text-white border-teal-600'
+									: 'bg-white text-gray-700 border-gray-300 hover:bg-teal-600 hover:text-white'
+							}`}
+						>
+							{tab.label}
+						</button>
+					))}
+				</div>
+			</section>
+
 			{/* Overview */}
-			<section className='max-w-7xl mx-auto px-4 sm:px-8 md:px-12 py-16 grid md:grid-cols-2 items-center gap-16'>
+			<section
+				id='overview'
+				className='max-w-7xl mx-auto px-4 sm:px-8 md:px-12 py-16 md:py-24 grid md:grid-cols-2 items-center gap-16'
+			>
 				{/* Thumbnail */}
 				<div className='w-full aspect-video relative'>
 					<Image
@@ -183,8 +246,11 @@ const CourseDetails = () => {
 				</div>
 			</section>
 
-			{/* What You’ll Learn */}
-			<section className='bg-[#f2f2f2] px-4 sm:px-8 md:px-12 py-16 md:py-24'>
+			{/* What You’ll Get */}
+			<section
+				id='output'
+				className='bg-[#f2f2f2] px-4 sm:px-8 md:px-12 py-16 md:py-24'
+			>
 				<div className='max-w-7xl mx-auto'>
 					<div className='text-center flex flex-col gap-2 mb-16'>
 						<p className='font-semibold text-teal-600 uppercase'>
@@ -268,7 +334,10 @@ const CourseDetails = () => {
 			</section>
 
 			{/* Content */}
-			<section className='max-w-5xl mx-auto px-4 sm:px-8 md:px-12 py-16'>
+			<section
+				id='content'
+				className='max-w-5xl mx-auto px-4 sm:px-8 md:px-12 py-16 md:py-24'
+			>
 				<div className='text-center flex flex-col gap-2 mb-16'>
 					<p className='font-semibold text-teal-600 uppercase'>
 						Course Content
@@ -311,7 +380,7 @@ const CourseDetails = () => {
 										{week.content.map((point, i) => (
 											<li
 												key={i}
-												className='inline-flex items-center px-3 py-2 bg-white text-sm text-gray-800 border border-teal-600 rounded-full transition'
+												className='inline-flex items-center px-3 py-2 bg-white text-sm text-gray-800 border border-gray-400 rounded-full transition'
 											>
 												{point}
 											</li>
@@ -325,7 +394,10 @@ const CourseDetails = () => {
 			</section>
 
 			{/* Instructor Section */}
-			<section className='px-4 sm:px-8 md:px-12 py-16'>
+			<section
+				id='instructors'
+				className='px-4 sm:px-8 md:px-12 py-16 md:py-24'
+			>
 				<div className='max-w-7xl mx-auto'>
 					{/* Heading */}
 					<div className='text-center flex flex-col gap-2 mb-16'>
@@ -379,7 +451,10 @@ const CourseDetails = () => {
 			</section>
 
 			{/* Student Reviews */}
-			<section className='px-4 sm:px-8 md:px-12 py-16'>
+			<section
+				id='reviews'
+				className='px-4 sm:px-8 md:px-12 py-16 md:py-24'
+			>
 				<div className='max-w-7xl mx-auto'>
 					<div className='text-center flex flex-col gap-2 mb-16'>
 						<p className='font-semibold text-teal-600 uppercase'>Reviews</p>
@@ -440,7 +515,10 @@ const CourseDetails = () => {
 			</section>
 
 			{/* Write a Review Section */}
-			<section className='px-4 sm:px-8 md:px-12 py-16'>
+			<section
+				id='write-a-review'
+				className='px-4 sm:px-8 md:px-12 py-16 md:py-24'
+			>
 				<div className='max-w-7xl mx-auto'>
 					<div className='text-center flex flex-col gap-2 mb-8'>
 						<p className='font-semibold text-teal-600 uppercase'>

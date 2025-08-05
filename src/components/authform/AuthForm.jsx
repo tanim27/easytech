@@ -8,6 +8,7 @@ const AuthForm = ({ type = 'login' }) => {
 	const initialValues = {
 		name: '',
 		email: '',
+		contact: '',
 		password: '',
 	}
 
@@ -19,6 +20,15 @@ const AuthForm = ({ type = 'login' }) => {
 		email: Yup.string()
 			.email('Invalid email address')
 			.required('Email is required'),
+		contact:
+			type === 'signup'
+				? Yup.string()
+						.required('Contact number is required')
+						.matches(
+							/^01[3-9]\d{8}$/,
+							'Enter a valid BD number e.g. 01XXXXXXXXX',
+						)
+				: Yup.string().notRequired(),
 		password: Yup.string()
 			.min(6, 'Password must be at least 6 characters')
 			.required('Password is required'),
@@ -31,7 +41,7 @@ const AuthForm = ({ type = 'login' }) => {
 
 	return (
 		<div className='min-h-screen flex items-center justify-center'>
-			<div className='w-full max-w-3xl bg-white shadow-xl p-8 sm:p-10'>
+			<div className='bg-white w-full max-w-3xl shadow-xl p-8 sm:p-10'>
 				<h2 className='font-extrabold text-4xl text-gray-800 text-center mb-6'>
 					{type === 'login' ? 'Login here' : 'Create Your Account'}
 				</h2>
@@ -83,6 +93,28 @@ const AuthForm = ({ type = 'login' }) => {
 								className='text-red-500 text-sm mt-1'
 							/>
 						</div>
+
+						{type === 'signup' && (
+							<div>
+								<label
+									htmlFor='contact'
+									className='block text-sm font-medium text-gray-700 mb-1'
+								>
+									Contact Number
+								</label>
+								<Field
+									name='contact'
+									type='number'
+									placeholder='01XXXXXXXXX'
+									className='w-full px-4 py-3 border-1 border-gray-300 focus:border-teal-500 focus:outline-none transition duration-200'
+								/>
+								<ErrorMessage
+									name='contact'
+									component='div'
+									className='text-red-500 text-sm mt-1'
+								/>
+							</div>
+						)}
 
 						<div>
 							<label
