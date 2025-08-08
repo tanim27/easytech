@@ -1,6 +1,7 @@
 'use client'
 
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
+import ShoppingCartCheckoutRoundedIcon from '@mui/icons-material/ShoppingCartCheckoutRounded'
 import gsap from 'gsap'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -93,6 +94,26 @@ const Navdrawer = ({ isOpen, onClose }) => {
 						))}
 					</ul>
 				</nav>
+
+				<div className='flex flex-col justify-between gap-4'>
+					<Link href='/cart'>
+						<button
+							className='w-full px-4 py-2 text-white bg-teal-600 hover:bg-teal-700 rounded-sm transition cursor-pointer'
+							onClick={onClose}
+						>
+							<ShoppingCartCheckoutRoundedIcon />
+						</button>
+					</Link>
+
+					<Link href='/auth/login'>
+						<button
+							className='w-full px-4 py-2 text-teal-600 border border-teal-600 hover:bg-teal-600 hover:text-white rounded-sm transition cursor-pointer'
+							onClick={onClose}
+						>
+							Login
+						</button>
+					</Link>
+				</div>
 			</div>
 		</>
 	)
