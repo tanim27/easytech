@@ -1,15 +1,15 @@
 import Home from '@/components/home/Home'
 
 export const metadata = {
-	title: 'EasyTech | Home',
-	description: 'This is a homepage.',
+	title: 'EasyTech',
+	description: 'This is the homepage.',
 }
 
 const HomePage = () => {
 	return (
-		<div>
+		<>
 			<Home />
-		</div>
+		</>
 	)
 }
 

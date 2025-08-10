@@ -161,7 +161,7 @@ const CourseDetails = () => {
 			</section>
 
 			{/* Tabs Navigation */}
-			<section className='bg-white border-b border-gray-300 sticky top-0 z-50 py-4'>
+			<section className='bg-white border-b border-gray-300 sticky top-0 z-10 py-4'>
 				<div className='flex flex-wrap justify-center gap-4 max-w-7xl mx-auto px-4 sm:px-8'>
 					{sectionTabs.map((tab) => (
 						<button
