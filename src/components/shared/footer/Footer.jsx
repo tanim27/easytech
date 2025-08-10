@@ -17,6 +17,24 @@ const Footer = () => {
 					<p className='text-sm text-gray-300 mb-4'>
 						Fusce varius, dolor tempor interdum tristique bibendum.
 					</p>
+					<div className='flex gap-4'>
+						<Facebook
+							className='hover:text-teal-600 cursor-pointer'
+							fontSize='medium'
+						/>
+						<Instagram
+							className='hover:text-teal-600 cursor-pointer'
+							fontSize='medium'
+						/>
+						<Pinterest
+							className='hover:text-teal-600 cursor-pointer'
+							fontSize='medium'
+						/>
+						<YouTube
+							className='hover:text-teal-600 cursor-pointer'
+							fontSize='medium'
+						/>
+					</div>
 				</div>
 
 				{/* Column 2 - Company Info */}
@@ -188,24 +206,6 @@ const Footer = () => {
 						/>
 						<span>info@easytech.com</span>
 					</p>
-					<div className='flex gap-4'>
-						<Facebook
-							className='hover:text-teal-600 cursor-pointer'
-							fontSize='medium'
-						/>
-						<Instagram
-							className='hover:text-teal-600 cursor-pointer'
-							fontSize='medium'
-						/>
-						<Pinterest
-							className='hover:text-teal-600 cursor-pointer'
-							fontSize='medium'
-						/>
-						<YouTube
-							className='hover:text-teal-600 cursor-pointer'
-							fontSize='medium'
-						/>
-					</div>
 				</div>
 			</div>
 

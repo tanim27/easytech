@@ -128,10 +128,14 @@ const AboutUs = () => {
 									</div>
 									<button
 										onClick={closeModal}
-										className='h-[50px] w-[50px] lg:h-[60px] lg:w-[60px] absolute -top-18 right-4 lg:-top-14 lg:-right-14 bg-white text-teal-500 hover:text-white hover:bg-teal-500 rounded-full p-2 shadow-xl transition cursor-pointer'
+										className='absolute -top-12 right-4 lg:-top-14 lg:-right-14
+               flex items-center justify-center
+               h-8 w-8 lg:h-10 lg:w-10
+               bg-white text-teal-500 hover:text-white hover:bg-teal-500
+               rounded-full shadow-xl transition cursor-pointer'
 										aria-label='Close modal'
 									>
-										<span className='text-3xl lg:text-4xl font-bold'>
+										<span className='text-xl lg:text-2xl leading-none'>
 											&times;
 										</span>
 									</button>

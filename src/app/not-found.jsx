@@ -24,7 +24,7 @@ export default function NotFoundPage() {
 				{/* Optional Illustration */}
 				<div className='mb-6'>
 					<Image
-						src='/assets/illustrations/404.png' // Add a relevant SVG/PNG file in /public/illustrations
+						src='/assets/illustrations/404.png'
 						alt='Not Found'
 						width={600}
 						height={400}

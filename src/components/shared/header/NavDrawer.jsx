@@ -64,7 +64,7 @@ const Navdrawer = ({ isOpen, onClose }) => {
 
 			<div
 				ref={drawerRef}
-				className='fixed top-0 right-0 h-full w-[80%] sm:w-[350px] z-50 p-6 bg-white rounded-l-xl shadow-2xl flex flex-col transform translate-x-full'
+				className='fixed top-0 right-0 h-full w-[80%] sm:w-[350px] z-100 p-6 bg-white rounded-l-xl shadow-2xl flex flex-col transform translate-x-full'
 			>
 				<div className='flex justify-end'>
 					<button
