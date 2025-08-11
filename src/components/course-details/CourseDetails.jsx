@@ -5,99 +5,14 @@ import {
 	PlayCircle,
 	PsychologyAlt,
 	School,
-	Translate,
 } from '@mui/icons-material'
+import CalendarToday from '@mui/icons-material/CalendarToday'
+import Group from '@mui/icons-material/Group'
+import VideoCameraFront from '@mui/icons-material/VideoCameraFront'
 import Image from 'next/image'
 
 import { ExpandMore } from '@mui/icons-material'
 import { useEffect, useState } from 'react'
-
-const courseWeeks = [
-	{
-		title: '1st Week',
-		content: ['HTML Basics', 'CSS Fundamentals', 'Box Model', 'Flexbox & Grid'],
-	},
-	{
-		title: '2nd Week',
-		content: [
-			'JavaScript Syntax',
-			'Variables & Functions',
-			'DOM Manipulation',
-			'ES6+ Features',
-		],
-	},
-	{
-		title: '3rd Week',
-		content: [
-			'React Basics',
-			'useState & useEffect',
-			'React Router',
-			'Component Structure',
-		],
-	},
-	{
-		title: '4th Week',
-		content: [
-			'Node.js Fundamentals',
-			'Express.js Routing',
-			'Middleware & APIs',
-		],
-	},
-	{
-		title: '5th Week',
-		content: ['MongoDB Basics', 'Mongoose Models', 'CRUD Operations'],
-	},
-	{
-		title: '6th Week',
-		content: ['JWT Authentication', 'User Roles', 'Protected Routes'],
-	},
-	{
-		title: '7th Week',
-		content: [
-			'E-commerce Project Setup',
-			'Integrating Frontend & Backend',
-			'Deploying the App',
-		],
-	},
-	{
-		title: '8th Week',
-		content: [
-			'E-commerce Project Setup',
-			'Integrating Frontend & Backend',
-			'Deploying the App',
-		],
-	},
-]
-
-const instructors = [
-	{
-		name: 'Sumit Saha',
-		role: 'Founder - Learn with Sumit',
-		image: '/assets/person-2.jpg',
-		description: [
-			'Sumit Saha is a tech entrepreneur. While studying Computer Science & Engineering, he founded Bangladesh’s first digital agency, Analyzen, in 2008. His passion for programming and teaching led him to start Learn with Sumit in 2020, a platform that has impacted 60,000+ students.',
-			'He is a full stack web developer and software architect with over 14 years of industry experience.',
-		],
-	},
-	{
-		name: 'Jessica Lin',
-		role: 'Frontend Mentor & UI/UX Expert',
-		image: '/assets/person-1.jpg',
-		description: [
-			'Jessica is a highly skilled frontend developer and UI/UX mentor. She has guided over 500 students and led numerous design-to-code bootcamps.',
-			'Her teaching approach encourages creativity, confidence, and strong design sense among learners.',
-		],
-	},
-	{
-		name: 'Rahim Khan',
-		role: 'Backend Developer & DevOps Coach',
-		image: '/assets/person-2.jpg',
-		description: [
-			'Rahim brings over a decade of backend and DevOps experience, having built scalable APIs and infrastructure for both startups and enterprises.',
-			'He teaches practical backend architecture and deployment strategies that help students become job-ready.',
-		],
-	},
-]
 
 const sectionTabs = [
 	{ label: 'Course Overview', id: 'overview' },
@@ -115,7 +30,7 @@ const scrollToSection = (id) => {
 	}
 }
 
-const CourseDetails = () => {
+const CourseDetails = ({ course }) => {
 	const [openIndex, setOpenIndex] = useState(null)
 	const [activeSection, setActiveSection] = useState('overview')
 
@@ -152,16 +67,16 @@ const CourseDetails = () => {
 			<section className='bg-[#f2f2f2] text-gray-800 px-4 sm:px-8 md:px-12 py-16'>
 				<div className='max-w-7xl mx-auto'>
 					<h1 className='text-3xl md:text-5xl font-bold mb-2'>
-						Full Stack Web Development
+						{course.overview.title}
 					</h1>
 					<p className='text-sm md:text-base'>
-						Home / Courses / Full Stack Web Development
+						Home / Courses / {course.overview.title}
 					</p>
 				</div>
 			</section>
 
 			{/* Tabs Navigation */}
-			<section className='bg-white border-b border-gray-300 sticky top-0 z-10 py-4'>
+			<section className='bg-white border-b border-gray-300 sticky top-0 z-50 py-4'>
 				<div className='flex flex-wrap justify-center gap-4 max-w-7xl mx-auto px-4 sm:px-8'>
 					{sectionTabs.map((tab) => (
 						<button
@@ -188,8 +103,8 @@ const CourseDetails = () => {
 				{/* Thumbnail */}
 				<div className='w-full aspect-video relative'>
 					<Image
-						src='/assets/illustrations/image-5.jpg'
-						alt='Full Stack Course'
+						src={course.overview.image}
+						alt={course.overview.title}
 						fill
 						className='rounded-lg object-cover'
 					/>
@@ -201,42 +116,38 @@ const CourseDetails = () => {
 						Course Overview
 					</h2>
 					<h1 className='font-bold text-3xl md:text-4xl text-gray-900 leading-tight mb-4'>
-						MERN Stack for Beginners
+						{course.overview.title}
 					</h1>
 					<p className='text-gray-700 text-justify mb-6'>
-						Learn to build dynamic, database-driven websites and web apps using
-						HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB. No
-						prior coding experience required!
+						{course.overview.description}
 					</p>
 
 					<ul className='space-y-4 text-gray-600'>
 						<li className='flex items-center gap-2'>
 							<PlayCircle className='text-teal-600' />
-							<span>Mode: Online (Recorded + Live)</span>
+							<span>Mode: {course.overview.mode}</span>
 						</li>
 						<li className='flex items-center gap-2'>
 							<School className='text-teal-600' />
-							<span>Level: Beginner to Advanced</span>
-						</li>
-						<li className='flex items-center gap-2'>
-							<Translate className='text-teal-600' />
-							<span>Language: English & Bangla</span>
+							<span>Level: {course.overview.level}</span>
 						</li>
 						<li className='flex items-center gap-2'>
 							<AccessTime className='text-teal-600' />
-							<span>Course Duration: 12 Weeks</span>
+							<span>Course Duration: {course.overview.course_duration}</span>
 						</li>
 						<li className='flex items-center gap-2'>
-							<AccessTime className='text-teal-600' />
-							<span>Start Date: 15th August 2025</span>
+							<CalendarToday className='text-teal-600' />
+							<span>Start Date: {course.overview.course_starting_date}</span>
 						</li>
 						<li className='flex items-center gap-2'>
-							<AccessTime className='text-teal-600' />
-							<span>Total Classes: 36</span>
+							<VideoCameraFront className='text-teal-600' />
+							<span>
+								Total Live Classes: {course.overview.total_live_classes}
+							</span>
 						</li>
 						<li className='flex items-center gap-2'>
-							<AccessTime className='text-teal-600' />
-							<span>Class Duration: 2 Hours per Session</span>
+							<Group className='text-teal-600' />
+							<span>Total Joined: {course.overview.total_joined}</span>
 						</li>
 					</ul>
 
@@ -346,8 +257,9 @@ const CourseDetails = () => {
 						Watch Course Outline
 					</h2>
 				</div>
+
 				<div className='space-y-4'>
-					{courseWeeks.map((week, index) => {
+					{course?.content?.map((week, index) => {
 						const isOpen = openIndex === index
 
 						return (
@@ -360,7 +272,7 @@ const CourseDetails = () => {
 									onClick={() => toggleAccordion(index)}
 								>
 									<span className='text-lg font-medium text-gray-900 group-hover:text-teal-600 transition'>
-										{week.title}
+										{week.module}
 									</span>
 									<ExpandMore
 										className={`text-gray-500 transform transition-transform duration-300 ${
@@ -377,7 +289,7 @@ const CourseDetails = () => {
 									}`}
 								>
 									<ul className='flex flex-wrap gap-3'>
-										{week.content.map((point, i) => (
+										{week.topic.map((point, i) => (
 											<li
 												key={i}
 												className='inline-flex items-center px-3 py-2 bg-white text-sm text-gray-800 border border-gray-400 rounded-full transition'
@@ -394,6 +306,7 @@ const CourseDetails = () => {
 			</section>
 
 			{/* Instructor Section */}
+			{/* Instructor Section */}
 			<section
 				id='instructors'
 				className='px-4 sm:px-8 md:px-12 py-16 md:py-24'
@@ -409,17 +322,17 @@ const CourseDetails = () => {
 
 					{/* Instructors Grid */}
 					<div className='grid gap-16 lg:gap-20'>
-						{instructors.map((instructor, index) => (
+						{course.instructor.map((instructor, idx) => (
 							<div
-								key={index}
+								key={idx}
 								className='flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-14'
 							>
 								{/* Instructor Image */}
 								<div className='relative w-full h-52 sm:w-80 sm:h-52 lg:w-[300px] lg:h-[200px] shrink-0'>
-									<div className='relative z-10 rounded-md overflow-hidden shadow-md w-full h-full'>
+									<div className='relative rounded-md overflow-hidden shadow-md w-full h-full'>
 										<Image
-											src={instructor.image}
-											alt={instructor.name}
+											src={instructor.instructor_image}
+											alt={instructor.instructor_name}
 											width={800}
 											height={500}
 											className='object-cover object-center w-full h-auto rounded-md shadow-md'
@@ -430,16 +343,14 @@ const CourseDetails = () => {
 								{/* Instructor Info */}
 								<div className='w-full max-w-4xl'>
 									<div className='border-l-2 border-gray-300 pl-5 sm:pl-6 space-y-4 text-base sm:text-lg text-justify leading-relaxed'>
-										{instructor.description.map((para, idx) => (
-											<p key={idx}>{para}</p>
-										))}
+										<p>{instructor.instructor_description}</p>
 
 										<div className='pt-4'>
 											<p className='font-bold text-teal-700 text-lg'>
-												{instructor.name}
+												{instructor.instructor_name}
 											</p>
 											<p className='font-semibold text-sm text-gray-900'>
-												{instructor.role}
+												{instructor.instructor_designation}
 											</p>
 										</div>
 									</div>

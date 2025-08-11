@@ -4,7 +4,8 @@ import AppsRoundedIcon from '@mui/icons-material/AppsRounded'
 import SearchIcon from '@mui/icons-material/Search'
 import ShoppingCartCheckoutRoundedIcon from '@mui/icons-material/ShoppingCartCheckoutRounded'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { useState } from 'react'
 import MobileNav from './MobileNav'
 
 const menuItems = [
@@ -21,7 +22,17 @@ const menuItems = [
 
 const Header = () => {
 	const pathname = usePathname()
+	const router = useRouter()
+	const [query, setQuery] = useState('')
+
 	const isActive = (path) => pathname === path
+
+	const handleSearch = () => {
+		if (query.trim()) {
+			router.push(`/courses?search=${encodeURIComponent(query.trim())}`)
+			setQuery('')
+		}
+	}
 
 	return (
 		<>
@@ -42,10 +53,16 @@ const Header = () => {
 						<div className='bg-gray-100 h-[50px] flex items-center rounded-full px-4 py-2 w-1/2 max-w-xl'>
 							<input
 								type='text'
-								placeholder='Search here...'
+								placeholder='Search courses...'
+								value={query}
+								onChange={(e) => setQuery(e.target.value)}
+								onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
 								className='flex-grow bg-transparent focus:outline-none p-4'
 							/>
-							<button className='bg-teal-600 text-white h-[30px] w-[120px] flex justify-center items-center gap-2 p-2 rounded-full ml-2 cursor-pointer hover:bg-teal-700 transition'>
+							<button
+								onClick={handleSearch}
+								className='bg-teal-600 text-white h-[30px] w-[120px] flex justify-center items-center gap-2 p-2 rounded-full ml-2 cursor-pointer hover:bg-teal-700 transition'
+							>
 								<SearchIcon fontSize='small' />
 								<span className='text-sm'>Search</span>
 							</button>
@@ -86,12 +103,10 @@ const Header = () => {
 									key={item.name}
 									href={item.path}
 									className={`relative text-sm text-center font-semibold transition-all duration-300 ease-in-out text-gray-700
-                  hover:text-teal-600
-                  after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-teal-600
-                  after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300
-                  ${
-										isActive(item.path) ? 'text-teal-600 after:scale-x-100' : ''
-									}`}
+										hover:text-teal-600
+										after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-teal-600
+										after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300
+										${isActive(item.path) ? 'text-teal-600 after:scale-x-100' : ''}`}
 								>
 									{item.name}
 								</Link>
