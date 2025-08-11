@@ -40,7 +40,7 @@ const AuthForm = ({ type = 'login' }) => {
 	}
 
 	return (
-		<div className='min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-20 py-8'>
+		<div className='flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-20 py-20'>
 			<div className='bg-white w-full max-w-3xl shadow-xl p-8 sm:p-10'>
 				<h2 className='font-extrabold text-4xl text-gray-800 text-center mb-6'>
 					{type === 'login' ? 'Login here' : 'Create Your Account'}
