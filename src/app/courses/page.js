@@ -1,4 +1,5 @@
 import Courses from '@/components/courses/Courses'
+import { Suspense } from 'react'
 
 export const metadata = {
 	title: 'EasyTech | Courses',
@@ -7,9 +8,9 @@ export const metadata = {
 
 const CoursesPage = () => {
 	return (
-		<>
+		<Suspense fallback={<div>Loading courses...</div>}>
 			<Courses />
-		</>
+		</Suspense>
 	)
 }
 

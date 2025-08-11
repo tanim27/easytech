@@ -14,7 +14,9 @@ const Courses = () => {
 		if (searchTerm) {
 			setFilteredCourses(
 				coursesData.filter((course) =>
-					course.title.toLowerCase().includes(searchTerm.toLowerCase()),
+					course.overview.title
+						.toLowerCase()
+						.includes(searchTerm.toLowerCase()),
 				),
 			)
 		} else {
