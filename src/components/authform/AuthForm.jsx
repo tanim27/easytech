@@ -1,42 +1,26 @@
 'use client'
 
+import { useUserLogin, useUserRegister } from '@/hooks/useAuth'
+import { loginSchema, signupSchema } from '@/libs/validations'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import Link from 'next/link'
-import * as Yup from 'yup'
 
 const AuthForm = ({ type = 'login' }) => {
-	const initialValues = {
-		name: '',
-		email: '',
-		contact: '',
-		password: '',
-	}
+	const initialValues = { name: '', email: '', contact: '', password: '' }
+	const validationSchema = type === 'login' ? loginSchema : signupSchema
 
-	const validationSchema = Yup.object({
-		name:
-			type === 'signup'
-				? Yup.string().required('Name is required')
-				: Yup.string(),
-		email: Yup.string()
-			.email('Invalid email address')
-			.required('Email is required'),
-		contact:
-			type === 'signup'
-				? Yup.string()
-						.required('Contact number is required')
-						.matches(
-							/^01[3-9]\d{8}$/,
-							'Enter a valid BD number e.g. 01XXXXXXXXX',
-						)
-				: Yup.string().notRequired(),
-		password: Yup.string()
-			.min(6, 'Password must be at least 6 characters')
-			.required('Password is required'),
-	})
+	const mutation = type === 'login' ? useUserLogin() : useUserRegister()
 
-	const handleSubmit = (values) => {
-		console.log(`${type.toUpperCase()} data:`, values)
-		// API call goes here
+	const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+		try {
+			await mutation.mutateAsync(values)
+			resetForm()
+			console.log(`${type.toUpperCase()} success!`)
+		} catch (error) {
+			console.error(`${type.toUpperCase()} error:`, error)
+		} finally {
+			setSubmitting(false)
+		}
 	}
 
 	return (
@@ -54,10 +38,7 @@ const AuthForm = ({ type = 'login' }) => {
 					<Form className='space-y-5'>
 						{type === 'signup' && (
 							<div>
-								<label
-									htmlFor='name'
-									className='block text-sm font-medium text-gray-700 mb-1'
-								>
+								<label className='block text-sm font-medium text-gray-700 mb-1'>
 									Name
 								</label>
 								<Field
@@ -75,10 +56,7 @@ const AuthForm = ({ type = 'login' }) => {
 						)}
 
 						<div>
-							<label
-								htmlFor='email'
-								className='block text-sm font-medium text-gray-700 mb-1'
-							>
+							<label className='block text-sm font-medium text-gray-700 mb-1'>
 								Email
 							</label>
 							<Field
@@ -96,10 +74,7 @@ const AuthForm = ({ type = 'login' }) => {
 
 						{type === 'signup' && (
 							<div>
-								<label
-									htmlFor='contact'
-									className='block text-sm font-medium text-gray-700 mb-1'
-								>
+								<label className='block text-sm font-medium text-gray-700 mb-1'>
 									Contact Number
 								</label>
 								<Field
@@ -117,10 +92,7 @@ const AuthForm = ({ type = 'login' }) => {
 						)}
 
 						<div>
-							<label
-								htmlFor='password'
-								className='block text-sm font-medium text-gray-700 mb-1'
-							>
+							<label className='block text-sm font-medium text-gray-700 mb-1'>
 								Password
 							</label>
 							<Field
@@ -148,7 +120,7 @@ const AuthForm = ({ type = 'login' }) => {
 				<p className='text-sm text-center mt-6 text-gray-700'>
 					{type === 'login' ? (
 						<>
-							Don&apos;t have an account?{' '}
+							Don't have an account?{' '}
 							<Link
 								href='/auth/signup'
 								className='text-teal-600 hover:underline font-medium'
