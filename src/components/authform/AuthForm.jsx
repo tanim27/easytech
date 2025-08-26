@@ -1,49 +1,52 @@
 'use client'
 
+import { useUserLogin, useUserRegister } from '@/hooks/useAuth'
+import { loginSchema, signupSchema } from '@/libs/validations'
+import { Alert, Snackbar } from '@mui/material'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import Link from 'next/link'
-import * as Yup from 'yup'
+import { useState } from 'react'
 
-const AuthForm = ({ type = 'login' }) => {
-	const initialValues = {
-		name: '',
-		email: '',
-		contact: '',
-		password: '',
-	}
+const AuthForm = ({ type = 'Login' }) => {
+	const initialValues = { name: '', email: '', contact: '', password: '' }
+	const validationSchema = type === 'Login' ? loginSchema : signupSchema
+	const mutation = type === 'Login' ? useUserLogin() : useUserRegister()
+	const successMessage =
+		type === 'Login' ? 'Logged in successfully!' : 'Registration successful!'
 
-	const validationSchema = Yup.object({
-		name:
-			type === 'signup'
-				? Yup.string().required('Name is required')
-				: Yup.string(),
-		email: Yup.string()
-			.email('Invalid email address')
-			.required('Email is required'),
-		contact:
-			type === 'signup'
-				? Yup.string()
-						.required('Contact number is required')
-						.matches(
-							/^01[3-9]\d{8}$/,
-							'Enter a valid BD number e.g. 01XXXXXXXXX',
-						)
-				: Yup.string().notRequired(),
-		password: Yup.string()
-			.min(6, 'Password must be at least 6 characters')
-			.required('Password is required'),
+	const [snackBar, setSnackBar] = useState({
+		open: false,
+		message: '',
+		severity: '',
 	})
 
-	const handleSubmit = (values) => {
-		console.log(`${type.toUpperCase()} data:`, values)
-		// API call goes here
+	const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+		try {
+			await mutation.mutateAsync(values)
+			resetForm()
+			showSnackBar(`${successMessage}`, 'success')
+			// console.log(`${type} success!`, values)
+		} catch (error) {
+			showSnackBar(`${type} error. ${error.message}`, 'error')
+			// console.error(`${type} error:`, error.message)
+		} finally {
+			setSubmitting(false)
+		}
+	}
+
+	const showSnackBar = (message, severity) => {
+		setSnackBar({ open: true, message, severity })
+	}
+
+	const handleCloseSnackbar = () => {
+		setSnackBar({ ...snackBar, open: false })
 	}
 
 	return (
 		<div className='flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-20 py-20'>
 			<div className='bg-white w-full max-w-3xl shadow-xl p-8 sm:p-10'>
 				<h2 className='font-extrabold text-4xl text-gray-800 text-center mb-6'>
-					{type === 'login' ? 'Login here' : 'Create Your Account'}
+					{type === 'Login' ? 'Login here' : 'Create Your Account'}
 				</h2>
 
 				<Formik
@@ -52,12 +55,9 @@ const AuthForm = ({ type = 'login' }) => {
 					onSubmit={handleSubmit}
 				>
 					<Form className='space-y-5'>
-						{type === 'signup' && (
+						{type === 'Signup' && (
 							<div>
-								<label
-									htmlFor='name'
-									className='block text-sm font-medium text-gray-700 mb-1'
-								>
+								<label className='block text-sm font-medium text-gray-700 mb-1'>
 									Name
 								</label>
 								<Field
@@ -75,10 +75,7 @@ const AuthForm = ({ type = 'login' }) => {
 						)}
 
 						<div>
-							<label
-								htmlFor='email'
-								className='block text-sm font-medium text-gray-700 mb-1'
-							>
+							<label className='block text-sm font-medium text-gray-700 mb-1'>
 								Email
 							</label>
 							<Field
@@ -94,12 +91,9 @@ const AuthForm = ({ type = 'login' }) => {
 							/>
 						</div>
 
-						{type === 'signup' && (
+						{type === 'Signup' && (
 							<div>
-								<label
-									htmlFor='contact'
-									className='block text-sm font-medium text-gray-700 mb-1'
-								>
+								<label className='block text-sm font-medium text-gray-700 mb-1'>
 									Contact Number
 								</label>
 								<Field
@@ -117,10 +111,7 @@ const AuthForm = ({ type = 'login' }) => {
 						)}
 
 						<div>
-							<label
-								htmlFor='password'
-								className='block text-sm font-medium text-gray-700 mb-1'
-							>
+							<label className='block text-sm font-medium text-gray-700 mb-1'>
 								Password
 							</label>
 							<Field
@@ -140,15 +131,15 @@ const AuthForm = ({ type = 'login' }) => {
 							type='submit'
 							className='w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 transition-all duration-300 shadow-md cursor-pointer'
 						>
-							{type === 'login' ? 'Login' : 'Sign Up'}
+							{type === 'Login' ? 'Login' : 'Sign Up'}
 						</button>
 					</Form>
 				</Formik>
 
 				<p className='text-sm text-center mt-6 text-gray-700'>
-					{type === 'login' ? (
+					{type === 'Login' ? (
 						<>
-							Don&apos;t have an account?{' '}
+							Don't have an account?{' '}
 							<Link
 								href='/auth/signup'
 								className='text-teal-600 hover:underline font-medium'
@@ -169,6 +160,22 @@ const AuthForm = ({ type = 'login' }) => {
 					)}
 				</p>
 			</div>
+
+			{/* Snackbar */}
+			<Snackbar
+				open={snackBar.open}
+				autoHideDuration={3000}
+				onClose={handleCloseSnackbar}
+				anchorOrigin={{ vertical: 'bottom-left', horizontal: 'center' }}
+			>
+				<Alert
+					onClose={handleCloseSnackbar}
+					severity={snackBar.severity}
+					sx={{ width: '100%' }}
+				>
+					{snackBar.message}
+				</Alert>
+			</Snackbar>
 		</div>
 	)
 }
