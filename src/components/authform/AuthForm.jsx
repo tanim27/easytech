@@ -2,32 +2,51 @@
 
 import { useUserLogin, useUserRegister } from '@/hooks/useAuth'
 import { loginSchema, signupSchema } from '@/libs/validations'
+import { Alert, Snackbar } from '@mui/material'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import Link from 'next/link'
+import { useState } from 'react'
 
-const AuthForm = ({ type = 'login' }) => {
+const AuthForm = ({ type = 'Login' }) => {
 	const initialValues = { name: '', email: '', contact: '', password: '' }
-	const validationSchema = type === 'login' ? loginSchema : signupSchema
+	const validationSchema = type === 'Login' ? loginSchema : signupSchema
+	const mutation = type === 'Login' ? useUserLogin() : useUserRegister()
+	const successMessage =
+		type === 'Login' ? 'Logged in successfully!' : 'Registration successful!'
 
-	const mutation = type === 'login' ? useUserLogin() : useUserRegister()
+	const [snackBar, setSnackBar] = useState({
+		open: false,
+		message: '',
+		severity: '',
+	})
 
 	const handleSubmit = async (values, { setSubmitting, resetForm }) => {
 		try {
 			await mutation.mutateAsync(values)
 			resetForm()
-			console.log(`${type.toUpperCase()} success!`)
+			showSnackBar(`${successMessage}`, 'success')
+			// console.log(`${type} success!`, values)
 		} catch (error) {
-			console.error(`${type.toUpperCase()} error:`, error)
+			showSnackBar(`${type} error. ${error.message}`, 'error')
+			// console.error(`${type} error:`, error.message)
 		} finally {
 			setSubmitting(false)
 		}
+	}
+
+	const showSnackBar = (message, severity) => {
+		setSnackBar({ open: true, message, severity })
+	}
+
+	const handleCloseSnackbar = () => {
+		setSnackBar({ ...snackBar, open: false })
 	}
 
 	return (
 		<div className='flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-20 py-20'>
 			<div className='bg-white w-full max-w-3xl shadow-xl p-8 sm:p-10'>
 				<h2 className='font-extrabold text-4xl text-gray-800 text-center mb-6'>
-					{type === 'login' ? 'Login here' : 'Create Your Account'}
+					{type === 'Login' ? 'Login here' : 'Create Your Account'}
 				</h2>
 
 				<Formik
@@ -36,7 +55,7 @@ const AuthForm = ({ type = 'login' }) => {
 					onSubmit={handleSubmit}
 				>
 					<Form className='space-y-5'>
-						{type === 'signup' && (
+						{type === 'Signup' && (
 							<div>
 								<label className='block text-sm font-medium text-gray-700 mb-1'>
 									Name
@@ -72,7 +91,7 @@ const AuthForm = ({ type = 'login' }) => {
 							/>
 						</div>
 
-						{type === 'signup' && (
+						{type === 'Signup' && (
 							<div>
 								<label className='block text-sm font-medium text-gray-700 mb-1'>
 									Contact Number
@@ -112,13 +131,13 @@ const AuthForm = ({ type = 'login' }) => {
 							type='submit'
 							className='w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 transition-all duration-300 shadow-md cursor-pointer'
 						>
-							{type === 'login' ? 'Login' : 'Sign Up'}
+							{type === 'Login' ? 'Login' : 'Sign Up'}
 						</button>
 					</Form>
 				</Formik>
 
 				<p className='text-sm text-center mt-6 text-gray-700'>
-					{type === 'login' ? (
+					{type === 'Login' ? (
 						<>
 							Don't have an account?{' '}
 							<Link
@@ -141,6 +160,22 @@ const AuthForm = ({ type = 'login' }) => {
 					)}
 				</p>
 			</div>
+
+			{/* Snackbar */}
+			<Snackbar
+				open={snackBar.open}
+				autoHideDuration={3000}
+				onClose={handleCloseSnackbar}
+				anchorOrigin={{ vertical: 'bottom-left', horizontal: 'center' }}
+			>
+				<Alert
+					onClose={handleCloseSnackbar}
+					severity={snackBar.severity}
+					sx={{ width: '100%' }}
+				>
+					{snackBar.message}
+				</Alert>
+			</Snackbar>
 		</div>
 	)
 }

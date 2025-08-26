@@ -6,7 +6,7 @@ export const metadata = {
 }
 
 const page = () => {
-	return <AuthForm type='login' />
+	return <AuthForm type='Login' />
 }
 
 export default page
