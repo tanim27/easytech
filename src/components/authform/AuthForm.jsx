@@ -8,7 +8,10 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 const AuthForm = ({ type = 'Login' }) => {
-	const initialValues = { name: '', email: '', contact: '', password: '' }
+	const initialValues =
+		type === 'Login'
+			? { identifier: '', password: '' }
+			: { name: '', email: '', contact: '', password: '' }
 	const validationSchema = type === 'Login' ? loginSchema : signupSchema
 	const mutation = type === 'Login' ? useUserLogin() : useUserRegister()
 	const successMessage =
@@ -55,59 +58,76 @@ const AuthForm = ({ type = 'Login' }) => {
 					onSubmit={handleSubmit}
 				>
 					<Form className='space-y-5'>
-						{type === 'Signup' && (
+						{type === 'Login' ? (
 							<div>
 								<label className='block text-sm font-medium text-gray-700 mb-1'>
-									Name
+									Email or Contact
 								</label>
 								<Field
-									name='name'
+									name='identifier'
 									type='text'
-									placeholder='John Doe'
+									placeholder='you@example.com or 01XXXXXXXXX'
 									className='w-full px-4 py-3 border-1 border-gray-300 focus:border-teal-500 focus:outline-none transition duration-200'
 								/>
 								<ErrorMessage
-									name='name'
+									name='identifier'
 									component='div'
 									className='text-red-500 text-sm mt-1'
 								/>
 							</div>
-						)}
+						) : (
+							<>
+								<div>
+									<label className='block text-sm font-medium text-gray-700 mb-1'>
+										Name
+									</label>
+									<Field
+										name='name'
+										type='text'
+										placeholder='John Doe'
+										className='w-full px-4 py-3 border-1 border-gray-300 focus:border-teal-500 focus:outline-none transition duration-200'
+									/>
+									<ErrorMessage
+										name='name'
+										component='div'
+										className='text-red-500 text-sm mt-1'
+									/>
+								</div>
 
-						<div>
-							<label className='block text-sm font-medium text-gray-700 mb-1'>
-								Email
-							</label>
-							<Field
-								name='email'
-								type='email'
-								placeholder='you@example.com'
-								className='w-full px-4 py-3 border-1 border-gray-300 focus:border-teal-500 focus:outline-none transition duration-200'
-							/>
-							<ErrorMessage
-								name='email'
-								component='div'
-								className='text-red-500 text-sm mt-1'
-							/>
-						</div>
+								<div>
+									<label className='block text-sm font-medium text-gray-700 mb-1'>
+										Email
+									</label>
+									<Field
+										name='email'
+										type='email'
+										placeholder='you@example.com'
+										className='w-full px-4 py-3 border-1 border-gray-300 focus:border-teal-500 focus:outline-none transition duration-200'
+									/>
+									<ErrorMessage
+										name='email'
+										component='div'
+										className='text-red-500 text-sm mt-1'
+									/>
+								</div>
 
-						{type === 'Signup' && (
-							<div>
-								<label className='block text-sm font-medium text-gray-700 mb-1'>
-									Contact Number
-								</label>
-								<Field
-									name='contact'
-									type='number'
-									placeholder='01XXXXXXXXX'
-									className='w-full px-4 py-3 border-1 border-gray-300 focus:border-teal-500 focus:outline-none transition duration-200'
-								/>
-								<ErrorMessage
-									name='contact'
-									component='div'
-									className='text-red-500 text-sm mt-1'
-								/>
-							</div>
+								<div>
+									<label className='block text-sm font-medium text-gray-700 mb-1'>
+										Contact Number
+									</label>
+									<Field
+										name='contact'
+										type='string'
+										placeholder='01XXXXXXXXX'
+										className='w-full px-4 py-3 border-1 border-gray-300 focus:border-teal-500 focus:outline-none transition duration-200'
+									/>
+									<ErrorMessage
+										name='contact'
+										component='div'
+										className='text-red-500 text-sm mt-1'
+									/>
+								</div>
+							</>
 						)}
 
 						<div>
