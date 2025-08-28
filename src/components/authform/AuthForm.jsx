@@ -28,10 +28,8 @@ const AuthForm = ({ type = 'Login' }) => {
 			await mutation.mutateAsync(values)
 			resetForm()
 			showSnackBar(`${successMessage}`, 'success')
-			// console.log(`${type} success!`, values)
 		} catch (error) {
 			showSnackBar(`${type} error. ${error.message}`, 'error')
-			// console.error(`${type} error:`, error.message)
 		} finally {
 			setSubmitting(false)
 		}
