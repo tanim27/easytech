@@ -29,7 +29,11 @@ const AuthForm = ({ type = 'Login' }) => {
 			resetForm()
 			showSnackBar(`${successMessage}`, 'success')
 		} catch (error) {
-			showSnackBar(`${type} error. ${error.message}`, 'error')
+			const backendMessage =
+				error?.response?.data?.message ||
+				error.message ||
+				'Something went wrong'
+			showSnackBar(`${type} error. ${backendMessage}`, 'error')
 		} finally {
 			setSubmitting(false)
 		}
