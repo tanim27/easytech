@@ -1,34 +1,24 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
-// connect to DB first
-connectDB()
-
-const handler = NextAuth({
+export const authOptions = {
 	providers: [
 		CredentialsProvider({
 			name: 'Credentials',
 			credentials: {
-				email: { label: 'Email', type: 'email' },
+				email: { label: 'Email', type: 'text' },
 				password: { label: 'Password', type: 'password' },
 			},
-			async authorize(credentials, req) {
-				try {
-					const user = await axiosRequest({
-						req,
-						url: '/api/auth/login',
-						method: 'POST',
-						data: credentials,
-					})
+			async authorize(credentials) {
+				const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(credentials),
+				})
 
-					if (user) {
-						return user
-					} else {
-						return null
-					}
-				} catch (error) {
-					throw new Error('Invalid credentials')
-				}
+				const user = await res.json()
+				if (res.ok && user) return user
+				return null
 			},
 		}),
 	],
@@ -60,6 +50,7 @@ const handler = NextAuth({
 	pages: {
 		signIn: '/auth/signin',
 	},
-})
+}
 
+const handler = NextAuth(authOptions)
 export { handler as GET, handler as POST }
