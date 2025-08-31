@@ -1,3 +1,4 @@
+import axiosRequest from '@/utils/axiosRequest'
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
@@ -10,15 +11,21 @@ export const authOptions = {
 				password: { label: 'Password', type: 'password' },
 			},
 			async authorize(credentials) {
-				const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify(credentials),
-				})
+				try {
+					const user = await axiosRequest({
+						url: '/login',
+						method: 'POST',
+						data: credentials,
+					})
 
-				const user = await res.json()
-				if (res.ok && user) return user
-				return null
+					if (user && user.id) {
+						return user
+					}
+					return null
+				} catch (error) {
+					console.error('Authorize error:', error)
+					return null
+				}
 			},
 		}),
 	],
@@ -34,6 +41,7 @@ export const authOptions = {
 				token.id = user.id
 				token.email = user.email
 				token.name = user.name
+				token.accessToken = user.token || null // if backend returns JWT
 			}
 			return token
 		},
@@ -43,7 +51,7 @@ export const authOptions = {
 				email: token.email,
 				name: token.name,
 			}
-			session.accessToken = token
+			session.accessToken = token.accessToken || null
 			return session
 		},
 	},

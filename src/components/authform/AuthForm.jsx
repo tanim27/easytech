@@ -2,7 +2,8 @@
 
 import { useUserLogin, useUserRegister } from '@/hooks/useAuth'
 import { loginSchema, signupSchema } from '@/libs/validations'
-import { Alert, Snackbar } from '@mui/material'
+import { Visibility, VisibilityOff } from '@mui/icons-material'
+import { Alert, IconButton, Snackbar } from '@mui/material'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -11,11 +12,14 @@ const AuthForm = ({ type = 'Login' }) => {
 	const initialValues =
 		type === 'Login'
 			? { identifier: '', password: '' }
-			: { name: '', email: '', contact: '', password: '' }
+			: { name: '', email: '', contact: '', password: '', confirmPassword: '' }
 	const validationSchema = type === 'Login' ? loginSchema : signupSchema
 	const mutation = type === 'Login' ? useUserLogin() : useUserRegister()
 	const successMessage =
 		type === 'Login' ? 'Logged in successfully!' : 'Registration successful!'
+	// Password Field
+	const [showPassword, setShowPassword] = useState(false)
+	const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
 	const [snackBar, setSnackBar] = useState({
 		open: false,
@@ -132,22 +136,56 @@ const AuthForm = ({ type = 'Login' }) => {
 							</>
 						)}
 
-						<div>
+						<div className='relative'>
 							<label className='block text-sm font-medium text-gray-700 mb-1'>
 								Password
 							</label>
 							<Field
 								name='password'
-								type='password'
+								type={showPassword ? 'text' : 'password'}
 								placeholder='••••••••'
-								className='w-full px-4 py-3 border-1 border-gray-300 focus:border-teal-500 focus:outline-none transition duration-200'
+								className='w-full px-4 py-3 pr-12 border-1 border-gray-300 focus:border-teal-500 focus:outline-none transition duration-200'
 							/>
+							<IconButton
+								type='button'
+								onClick={() => setShowPassword(!showPassword)}
+								className='!absolute right-2 top-7'
+							>
+								{showPassword ? <VisibilityOff /> : <Visibility />}
+							</IconButton>
 							<ErrorMessage
 								name='password'
 								component='div'
 								className='text-red-500 text-sm mt-1'
 							/>
 						</div>
+
+						{/* Confirm Password (Signup only) */}
+						{type === 'Signup' && (
+							<div className='relative'>
+								<label className='block text-sm font-medium text-gray-700 mb-1'>
+									Confirm Password
+								</label>
+								<Field
+									name='confirmPassword'
+									type={showConfirmPassword ? 'text' : 'password'}
+									placeholder='••••••••'
+									className='w-full px-4 py-3 pr-12 border-1 border-gray-300 focus:border-teal-500 focus:outline-none transition duration-200'
+								/>
+								<IconButton
+									type='button'
+									onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+									className='!absolute right-2 top-7'
+								>
+									{showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+								</IconButton>
+								<ErrorMessage
+									name='confirmPassword'
+									component='div'
+									className='text-red-500 text-sm mt-1'
+								/>
+							</div>
+						)}
 
 						<button
 							type='submit'

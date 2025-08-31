@@ -37,4 +37,7 @@ export const signupSchema = Yup.object().shape({
 			passwordRegex,
 			'Password must contain at least one uppercase letter, one lowercase letter, and one special character',
 		),
+	confirmPassword: Yup.string()
+		.required('Confirm Password is required')
+		.oneOf([Yup.ref('password'), null], 'Passwords must match'),
 })
