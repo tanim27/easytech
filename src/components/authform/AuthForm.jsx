@@ -1,7 +1,7 @@
 'use client'
 
 import { useUserLogin, useUserRegister } from '@/hooks/useAuth'
-import { loginSchema, signupSchema } from '@/libs/validations'
+import { LoginSchema, SignupSchema } from '@/libs/validations'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { Alert, IconButton, Snackbar } from '@mui/material'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
@@ -13,11 +13,10 @@ const AuthForm = ({ type = 'Login' }) => {
 		type === 'Login'
 			? { identifier: '', password: '' }
 			: { name: '', email: '', contact: '', password: '', confirmPassword: '' }
-	const validationSchema = type === 'Login' ? loginSchema : signupSchema
+	const validationSchema = type === 'Login' ? LoginSchema : SignupSchema
 	const mutation = type === 'Login' ? useUserLogin() : useUserRegister()
 	const successMessage =
 		type === 'Login' ? 'Logged in successfully!' : 'Registration successful!'
-	// Password Field
 	const [showPassword, setShowPassword] = useState(false)
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
@@ -160,7 +159,6 @@ const AuthForm = ({ type = 'Login' }) => {
 							/>
 						</div>
 
-						{/* Confirm Password (Signup only) */}
 						{type === 'Signup' && (
 							<div className='relative'>
 								<label className='block text-sm font-medium text-gray-700 mb-1'>
@@ -187,6 +185,16 @@ const AuthForm = ({ type = 'Login' }) => {
 							</div>
 						)}
 
+						<p className='text-sm text-center mt-6 text-gray-700'>
+							Forgot password?{' '}
+							<Link
+								href='/forgot-password'
+								className='text-teal-600 hover:underline font-medium'
+							>
+								Click here.
+							</Link>
+						</p>
+
 						<button
 							type='submit'
 							className='w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 transition-all duration-300 shadow-md cursor-pointer'
@@ -204,7 +212,7 @@ const AuthForm = ({ type = 'Login' }) => {
 								href='/auth/signup'
 								className='text-teal-600 hover:underline font-medium'
 							>
-								Sign Up
+								Sign up
 							</Link>
 						</>
 					) : (
