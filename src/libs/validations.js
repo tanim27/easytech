@@ -7,7 +7,7 @@ const passwordRegex =
 	/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).*$/
 
 // Login Schema
-export const loginSchema = Yup.object().shape({
+export const LoginSchema = Yup.object().shape({
 	identifier: Yup.string()
 		.required('Email or Contact is required')
 		.test('is-valid', 'Enter a valid email or contact number', (value) => {
@@ -18,7 +18,7 @@ export const loginSchema = Yup.object().shape({
 })
 
 // Signup Schema
-export const signupSchema = Yup.object().shape({
+export const SignupSchema = Yup.object().shape({
 	name: Yup.string()
 		.required('Name is required')
 		.min(3, 'Name must be at least 3 characters')
@@ -37,4 +37,17 @@ export const signupSchema = Yup.object().shape({
 			passwordRegex,
 			'Password must contain at least one uppercase letter, one lowercase letter, and one special character',
 		),
+	confirmPassword: Yup.string()
+		.required('Confirm Password is required')
+		.oneOf([Yup.ref('password'), null], 'Passwords must match'),
+})
+
+// Forgot Password Schema
+export const ForgotPasswordValidationSchema = Yup.object().shape({
+	email: Yup.string()
+		.required('Email is required')
+		.matches(emailRegex, 'Enter a valid email address'),
+	// contact: Yup.string()
+	// 	.required('Contact number is required')
+	// 	.matches(contactRegex, 'Enter a valid Bangladeshi contact number'),
 })

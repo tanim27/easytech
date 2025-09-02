@@ -1,33 +1,30 @@
+import axiosRequest from '@/utils/axiosRequest'
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
-// connect to DB first
-connectDB()
-
-const handler = NextAuth({
+export const authOptions = {
 	providers: [
 		CredentialsProvider({
 			name: 'Credentials',
 			credentials: {
-				email: { label: 'Email', type: 'email' },
+				email: { label: 'Email', type: 'text' },
 				password: { label: 'Password', type: 'password' },
 			},
-			async authorize(credentials, req) {
+			async authorize(credentials) {
 				try {
 					const user = await axiosRequest({
-						req,
-						url: '/api/auth/login',
+						url: '/login',
 						method: 'POST',
 						data: credentials,
 					})
 
-					if (user) {
+					if (user && user.id) {
 						return user
-					} else {
-						return null
 					}
+					return null
 				} catch (error) {
-					throw new Error('Invalid credentials')
+					console.error('Authorize error:', error)
+					return null
 				}
 			},
 		}),
@@ -44,6 +41,7 @@ const handler = NextAuth({
 				token.id = user.id
 				token.email = user.email
 				token.name = user.name
+				token.accessToken = user.token || null // if backend returns JWT
 			}
 			return token
 		},
@@ -53,13 +51,14 @@ const handler = NextAuth({
 				email: token.email,
 				name: token.name,
 			}
-			session.accessToken = token
+			session.accessToken = token.accessToken || null
 			return session
 		},
 	},
 	pages: {
 		signIn: '/auth/signin',
 	},
-})
+}
 
+const handler = NextAuth(authOptions)
 export { handler as GET, handler as POST }

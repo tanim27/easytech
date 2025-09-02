@@ -24,3 +24,36 @@ export const useUserLogin = () => {
 			}),
 	})
 }
+
+export const useForgotPasswordWithEmail = () => {
+	return useMutation({
+		mutationFn: async (body) =>
+			await axiosRequest({
+				url: '/api/auth/forgot-password/email',
+				method: 'POST',
+				data: body,
+			}),
+	})
+}
+
+export const useResetPassword = (token) => {
+	return useMutation({
+		mutationFn: async (body) =>
+			await axiosRequest({
+				url: `/api/auth/reset-password/${token}`,
+				method: 'POST',
+				data: body,
+			}),
+	})
+}
+
+export const useChangePassword = () => {
+	return useMutation({
+		mutationFn: (body) =>
+			axiosRequest({
+				url: `/api/auth/change-password`,
+				method: 'POST',
+				data: body,
+			}),
+	})
+}
