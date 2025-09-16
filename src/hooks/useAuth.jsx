@@ -29,7 +29,7 @@ export const useForgotPasswordWithEmail = () => {
 	return useMutation({
 		mutationFn: async (body) =>
 			await axiosRequest({
-				url: '/api/auth/forgot-password/email',
+				url: '/api/auth/password-reset-request/email',
 				method: 'POST',
 				data: body,
 			}),

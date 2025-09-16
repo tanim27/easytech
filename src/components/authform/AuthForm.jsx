@@ -188,7 +188,7 @@ const AuthForm = ({ type = 'Login' }) => {
 						<p className='text-sm text-center mt-6 text-gray-700'>
 							Forgot password?{' '}
 							<Link
-								href='/forgot-password'
+								href='/password-reset-request/email'
 								className='text-teal-600 hover:underline font-medium'
 							>
 								Click here.

@@ -14,8 +14,8 @@ const ForgotPassword = ({ type = 'Email' }) => {
 
 	const successMessage =
 		type === 'Email'
-			? 'Password reset link sent to your email'
-			: 'OTP sent to your contact number'
+			? 'Password reset link sent to your email.'
+			: 'An OTP has been sent to your contact number.'
 
 	const [snackBar, setSnackBar] = useState({
 		open: false,
@@ -114,7 +114,7 @@ const ForgotPassword = ({ type = 'Email' }) => {
 						{type === 'Email' ? (
 							<p className='text-sm text-center mt-6 text-gray-700'>
 								<Link
-									href='/forgot-password/otp'
+									href='/password-reset-request/otp'
 									className='text-teal-600 hover:underline font-medium'
 								>
 									Get OTP on your phone
@@ -123,7 +123,7 @@ const ForgotPassword = ({ type = 'Email' }) => {
 						) : (
 							<p className='text-sm text-center mt-6 text-gray-700'>
 								<Link
-									href='/forgot-password/email'
+									href='/password-reset-request/email'
 									className='text-teal-600 hover:underline font-medium'
 								>
 									Get reset link to your email
