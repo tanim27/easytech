@@ -83,11 +83,11 @@ const CourseDetails = ({ course }) => {
 							key={tab.id}
 							onClick={() => scrollToSection(tab.id)}
 							className={`px-5 py-2 rounded-full transition font-medium border cursor-pointer
-              ${
-								activeSection === tab.id
-									? 'bg-teal-600 text-white border-teal-600'
-									: 'bg-white text-gray-700 border-gray-300 hover:bg-teal-600 hover:text-white'
-							}`}
+								${
+									activeSection === tab.id
+										? 'bg-teal-600 text-white border-teal-600'
+										: 'bg-white text-gray-700 border-gray-300 hover:bg-teal-600 hover:text-white'
+								}`}
 						>
 							{tab.label}
 						</button>

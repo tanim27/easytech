@@ -24,16 +24,7 @@ const CoursesCard = ({ course }) => {
 	} = course?.overview ?? {}
 
 	return (
-		<div
-			className='bg-white rounded-xl overflow-hidden shadow-lg text-gray-800 flex flex-col my-4
-      w-full
-      max-w-[600px]
-      min-w-[280px]
-      mx-auto
-      sm:max-w-[450px]
-      md:max-w-[550px]
-      lg:max-w-[600px]'
-		>
+		<div className='bg-white rounded-xl overflow-hidden shadow-lg text-gray-800 flex flex-col my-4 w-full max-w-[600px] min-w-[280px] mx-auto sm:max-w-[450px] md:max-w-[550px] lg:max-w-[600px]'>
 			{/* Image */}
 			<div className='relative h-48 sm:h-56 md:h-60 w-full'>
 				{image ? (
