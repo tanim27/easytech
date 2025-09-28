@@ -14,6 +14,32 @@ export const coursesData = [
 			total_joined: 23,
 			course_price: '$60',
 		},
+		course_output: [
+			{
+				course_output_image: '/assets/illustrations/image-3.jpg',
+				course_output_title: 'Build 1 Real-World Projects',
+				course_output_description:
+					'Build 3 real-world projects including a responsive portfolio website, a dynamic blog application, and a full-featured e-commerce site to showcase your skills.',
+			},
+			{
+				course_output_image: '/assets/illustrations/image-3.jpg',
+				course_output_title: 'Build 2 Real-World Projects',
+				course_output_description:
+					'Build 3 real-world projects including a responsive portfolio website, a dynamic blog application, and a full-featured e-commerce site to showcase your skills.',
+			},
+			{
+				course_output_image: '/assets/illustrations/image-3.jpg',
+				course_output_title: 'Build 3 Real-World Projects',
+				course_output_description:
+					'Build 3 real-world projects including a responsive portfolio website, a dynamic blog application, and a full-featured e-commerce site to showcase your skills.',
+			},
+			{
+				course_output_image: '/assets/illustrations/image-3.jpg',
+				course_output_title: 'Build 4 Real-World Projects',
+				course_output_description:
+					'Build 3 real-world projects including a responsive portfolio website, a dynamic blog application, and a full-featured e-commerce site to showcase your skills.',
+			},
+		],
 		content: [
 			{
 				module: 'Week 1',

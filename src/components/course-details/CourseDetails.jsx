@@ -1,11 +1,6 @@
 'use client'
 
-import {
-	AccessTime,
-	PlayCircle,
-	PsychologyAlt,
-	School,
-} from '@mui/icons-material'
+import { AccessTime, PlayCircle, School } from '@mui/icons-material'
 import CalendarToday from '@mui/icons-material/CalendarToday'
 import Group from '@mui/icons-material/Group'
 import VideoCameraFront from '@mui/icons-material/VideoCameraFront'
@@ -163,6 +158,7 @@ const CourseDetails = ({ course }) => {
 				className='bg-[#f2f2f2] px-4 sm:px-8 md:px-12 py-16 md:py-24'
 			>
 				<div className='max-w-7xl mx-auto'>
+					{/* Section Heading */}
 					<div className='text-center flex flex-col gap-2 mb-16'>
 						<p className='font-semibold text-teal-600 uppercase'>
 							Course Output
@@ -175,71 +171,34 @@ const CourseDetails = ({ course }) => {
 							eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						</p>
 					</div>
-
+					{/* Cards */}
 					<div className='flex flex-wrap justify-center gap-8'>
-						{/* Card 1 */}
-						<div className='bg-white w-[280px] h-[300px] p-8 rounded-sm shadow-xs hover:-translate-y-2 transition duration-400 flex flex-col justify-center gap-4'>
-							<div className='flex flex-col justify-center items-center gap-4'>
-								<div className='text-teal-600 text-6xl'>
-									<PsychologyAlt fontSize='inherit' />
+						{course.course_output?.map((output, index) => (
+							<div
+								key={index}
+								className='bg-white w-[280px] h-[350px] p-8 rounded-sm shadow-xs hover:-translate-y-2 transition duration-400 flex flex-col justify-center gap-4'
+							>
+								<div className='flex flex-col justify-center items-center gap-4'>
+									{/* Icon/Image */}
+									<div className='relative w-20 h-20'>
+										<Image
+											src={output.course_output_image}
+											alt={output.course_output_title}
+											fill
+											className='rounded-lg object-contain'
+										/>
+									</div>
+									{/* Title */}
+									<h3 className='font-semibold text-gray-900 text-xl text-center'>
+										{output.course_output_title}
+									</h3>
+									{/* Description */}
+									<p className='text-gray-600 text-justify'>
+										{output.course_output_description}
+									</p>
 								</div>
-								<h3 className='font-semibold text-gray-900 text-xl'>
-									Learn the Latest Skills
-								</h3>
-								<p className='text-gray-600 text-justify'>
-									Learning top skills can bring an extra-ordinary outcome in a
-									career.
-								</p>
 							</div>
-						</div>
-
-						{/* Card 2 */}
-						<div className='bg-white w-[280px] h-[300px] p-8 rounded-sm shadow-xs hover:-translate-y-2 transition duration-400 flex flex-col justify-center gap-4'>
-							<div className='flex flex-col justify-center items-center gap-4'>
-								<div className='text-teal-600 text-6xl'>
-									<PsychologyAlt fontSize='inherit' />
-								</div>
-								<h3 className='font-semibold text-gray-900 text-xl'>
-									Learn the Latest Skills
-								</h3>
-								<p className='text-gray-600 text-justify'>
-									Learning top skills can bring an extra-ordinary outcome in a
-									career.
-								</p>
-							</div>
-						</div>
-
-						{/* Card 3 */}
-						<div className='bg-white w-[280px] h-[300px] p-8 rounded-sm shadow-xs hover:-translate-y-2 transition duration-400 flex flex-col justify-center gap-4'>
-							<div className='flex flex-col justify-center items-center gap-4'>
-								<div className='text-teal-600 text-6xl'>
-									<PsychologyAlt fontSize='inherit' />
-								</div>
-								<h3 className='font-semibold text-gray-900 text-xl'>
-									Learn the Latest Skills
-								</h3>
-								<p className='text-gray-600 text-justify'>
-									Learning top skills can bring an extra-ordinary outcome in a
-									career.
-								</p>
-							</div>
-						</div>
-
-						{/* Card 4 */}
-						<div className='bg-white w-[280px] h-[300px] p-8 rounded-sm shadow-xs hover:-translate-y-2 transition duration-400 flex flex-col justify-center gap-4'>
-							<div className='flex flex-col justify-center items-center gap-4'>
-								<div className='text-teal-600 text-6xl'>
-									<PsychologyAlt fontSize='inherit' />
-								</div>
-								<h3 className='font-semibold text-gray-900 text-xl'>
-									Learn the Latest Skills
-								</h3>
-								<p className='text-gray-600 text-justify'>
-									Learning top skills can bring an extra-ordinary outcome in a
-									career.
-								</p>
-							</div>
-						</div>
+						))}
 					</div>
 				</div>
 			</section>
@@ -304,8 +263,6 @@ const CourseDetails = ({ course }) => {
 					})}
 				</div>
 			</section>
-
-			{/* Instructor Section */}
 			{/* Instructor Section */}
 			<section
 				id='instructors'
@@ -360,7 +317,6 @@ const CourseDetails = ({ course }) => {
 					</div>
 				</div>
 			</section>
-
 			{/* Student Reviews */}
 			<section
 				id='reviews'
@@ -424,7 +380,6 @@ const CourseDetails = ({ course }) => {
 					</div>
 				</div>
 			</section>
-
 			{/* Write a Review Section */}
 			<section
 				id='write-a-review'
